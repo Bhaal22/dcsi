@@ -1,7 +1,7 @@
 Driving Curse Syndrom : Ignition !
 ====
 
-![alt DCSI](http://www.drylm.org/res/projects/dcsi/dcsi.png)
+![alt DCSI](https://github.com/Bhaal22/dcsi/blob/master/data/romdisk/menupics/fondcolor.png)
 
 DCSI is a Dreamcast game in a 3D environment where player can drive vehicles around some maps.
 
