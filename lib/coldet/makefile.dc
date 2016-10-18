@@ -1,0 +1,22 @@
+LIB=libcoldet.a
+LIBPATH=.
+OPT=-O2
+CFLAGS=-c $(OPT) -DGCC
+OBJS= coldet.o coldet_bld.o box.o box_bld.o tritri.o math3d.o sysdep.o mytritri.o
+
+
+KOS_CFLAGS += -O2
+#KOS_CFLAGS += -I/home/john/formation/Dreamcast/STL/STLport-4.6/stlport -O2
+
+include $(KOS_BASE)/Makefile.rules
+
+all: $(LIB)
+
+$(LIB): $(OBJS)
+	rm -f $(LIB)
+	$(KOS_AR) rcs $(LIBPATH)/ $(OBJS)
+
+clean:
+	rm *.o $(LIB)
+
+

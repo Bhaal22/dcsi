@@ -33,12 +33,11 @@
 #ifdef __cplusplus      //include the jpeg library as a C file.
 extern "C"{
 #endif
-#include<libjpeg/jpeglib.h>
-#include <libjpeg/jerror.h>	
+#include<jpeg/jpeglib.h>
+#include <jpeg/jerror.h>
 #ifdef __cplusplus
 }
 #endif
-#include <math3d.h>
 
 
 #define PNG 1
