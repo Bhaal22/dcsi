@@ -1,14 +1,27 @@
 #include "MenuManager.h"
 
 int MenuManager::check_left() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
+  //uint8 c;
+  //static cont_cond_t cond;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  //c = maple_first_controller();
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
   
-  if (cont_get_cond(c, &cond) < 0)
-    return 0;
+  /*if (cont_get_cond(c, &cond) < 0)
+    return 0;*/
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
   
-  if (!(cond.buttons & CONT_DPAD_LEFT)) {
+  //if (!(cond.buttons & CONT_DPAD_LEFT)) {
+  if (!(state->buttons & CONT_DPAD_LEFT)) {
     monmoteur.Setposcadre(monmoteur.Getposcadre()-1);
     if(monmoteur.Getposcadre()<0) monmoteur.Setposcadre(2);
     monmoteur.Setposcadrex((float)monmoteur.Getposcadre()*192.0);
@@ -19,14 +32,27 @@ int MenuManager::check_left() {
 }
 
 int MenuManager::check_right() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
   
-  if (cont_get_cond(c, &cond) < 0)
-    return 0;
+  //if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
 
-  if (!(cond.buttons & CONT_DPAD_RIGHT)) {
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_DPAD_RIGHT)) {
+  if (!(state->buttons & CONT_DPAD_RIGHT)) {
     monmoteur.Setposcadre((monmoteur.Getposcadre()+1)%3);
     monmoteur.Setposcadrex((float)monmoteur.Getposcadre()*192.0);
     return 1;
@@ -35,12 +61,26 @@ int MenuManager::check_right() {
 }
 
 int MenuManager::check_down() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
-    if (cont_get_cond(c, &cond) < 0)
-    return 0;
-    if (!(cond.buttons & CONT_DPAD_DOWN)) {
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
+  //  if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_DPAD_DOWN)) {
+  if (!(state->buttons & CONT_DPAD_DOWN)) {
     wav PassageSuivant("/rd/PassageSuivant.wav");
     PassageSuivant.play();
     if(monmoteur.Getpos()==0)
@@ -61,13 +101,27 @@ int MenuManager::check_down() {
 }
 
 int MenuManager::check_up() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
   
-  if (cont_get_cond(c, &cond) < 0)
-    return 0;
-  if (!(cond.buttons & CONT_DPAD_UP)) {
+  //if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_DPAD_UP)) {
+  if (!(state->buttons & CONT_DPAD_UP)) {
     wav PassageSuivant("/rd/PassageSuivant.wav");
     PassageSuivant.play();
     if(monmoteur.Getpos()==2)
@@ -88,36 +142,78 @@ int MenuManager::check_up() {
 }
 
 int MenuManager::check_a() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
-    if (cont_get_cond(c, &cond) < 0)
-    return 0;
-    if (!(cond.buttons & CONT_A)) {
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
+  //  if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_A)) {
+  if (!(state->buttons & CONT_A)) {
     return 1;
   }
   return 0;
 }
 
 int MenuManager::check_b() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
-    if (cont_get_cond(c, &cond) < 0)
-    return 0;
-    if (!(cond.buttons & CONT_B)) {
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
+  //  if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_B)) {
+  if (!(state->buttons & CONT_B)) {
     return 1;
   }
   return 0;
 }
 
 int MenuManager::check_y() {
-  uint8 c;
-  static cont_cond_t cond;
-  c = maple_first_controller();
-  if (cont_get_cond(c, &cond) < 0)
-    return 0;
-  if (!(cond.buttons & CONT_Y)) {
+  //uint8 c;
+  //static cont_cond_t cond;
+  //c = maple_first_controller();
+  //if (cont_get_cond(c, &cond) < 0)
+  //  return 0;
+
+  maple_device_t *cont;
+  cont_state_t *state;
+
+  cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+  if(cont) {
+        state = (cont_state_t *)maple_dev_status(cont);
+
+        if(!state)
+            return 0;
+  }
+
+  //if (!(cond.buttons & CONT_Y)) {
+  if (!(state->buttons & CONT_Y)) {
     monmoteur.screenShot();
     return 1;
   }

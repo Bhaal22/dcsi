@@ -4,9 +4,10 @@ OBJS = romdisk.o  Element.o \
 	assets/TheLittleHouseOnThePrairie.o \
 	assets/StartPane.o \
 	Camera.o \
-	assets/Vehicle.o Landscape.o GraphicalElement.o \
+	Vehicle.o Landscape.o GraphicalElement.o \
 	assets/SkyBox.o BoundingBox.o \
-	OisisVehicle.o Init.o Main.o \
+	assets/OisisVehicle.o \
+	Init.o Main.o \
 	io/ogg.o \
 	menu/Menu2D.o \
 	io/wav.o \
@@ -14,7 +15,8 @@ OBJS = romdisk.o  Element.o \
 	assets/MomoVehicle.o \
 	assets/NoelVehicle.o \
 	game.o \
-	menu/MenuManager.o video.o
+	menu/MenuManager.o \
+#video.o
 #KOS_CFLAGS +=	-DDREAMCAST -I/net/home/m/muller/bin/STLport-4.6/stlport  -I/net/home/m/muller/kos/addons/libjpeg
 
 KOS_CFLAGS += -I. -I../lib/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
@@ -38,8 +40,10 @@ clean: rm-elf
 #	$(KOS_CC)  $(KOS_CFLAGS) $(KOS_LDFLAGS) -o $(TARGET) $(KOS_START) \
 #		$(OBJS) $(DATAOBJS) $(OBJEXTRA) -L$(KOS_BASE) -lkglx -lk++ -lpng -lpcx -ljpeg -lz -lm $(KOS_LIBS)
 
+#-lk++
+#-lmpg
 $(TARGET): $(OBJS)
-	kos-c++ -Wall -o $(TARGET) $(OBJS) -lk++ -lmpg -lkglx -loggvorbisplay -lcoldet -ljpeg -lpng -lpcx -lz -ldcplib -lm -lkosutils
+	kos-c++ -Wall -o $(TARGET) $(OBJS) -lkglx -lvorbis -logg -loggvorbisplay -lcoldet -ljpeg -lpng -lpcx -lz -ldcplib -lm -lkosutils
 
 #-lk++ -lpng -lpcx -ljpeg -lz -lkmg  -lm -lcoldet 
 

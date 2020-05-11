@@ -18,8 +18,8 @@
 #include <kos.h>
 
 /* OpenGl includes */
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <GLX/gl.h>
+#include <GLX/glu.h>
 
 /* Math include */
 #include <math.h>

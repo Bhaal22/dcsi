@@ -8,7 +8,7 @@ pvr_init_params_t params = {
         512*512
 };
 
-/*Déclaration du constructeur*/
+/*Dï¿½claration du constructeur*/
 Menu2D :: Menu2D(void)
 {
   //pvr_init(&params);
@@ -54,7 +54,7 @@ Menu2D :: Menu2D(void)
   filter_mode = 0;
 }
 
-/*Déclaration du destructeur*/
+/*Dï¿½claration du destructeur*/
 Menu2D::~Menu2D(void)
 {
   delete[] lesTextures;
@@ -67,7 +67,7 @@ void Menu2D::Resetfont(void)
   filter_mode = 0;
 }
 
-/* Remet à zero tous les attibuts de menu*/
+/* Remet ï¿½ zero tous les attibuts de menu*/
 void Menu2D::Resetall()
 {
   lesTextures[0] = pvr_mem_malloc(512*512*2);
@@ -147,7 +147,7 @@ void Menu2D::draw_tr_intro(float alpha)
     pvr_prim(&vert, sizeof(vert));
 }
 
-/* Dessine une box texturée avec de l'alpha */
+/* Dessine une box texturï¿½ï¿½e avec de l'alpha */
 void Menu2D::draw_alp_tex_box(float x1,float y1,float x2,float y2,float z,int taille,pvr_ptr_t texture,float alpha)
 {
     pvr_poly_cxt_t cxt;
@@ -253,7 +253,7 @@ void Menu2D::drawFont (char * lemot,int taille,int posx,int posy,float r,float g
   monText->end ();
 }
 
-/*affichage d'une box colorée*/
+/*affichage d'une box colorï¿½ï¿½e*/
 void Menu2D::draw_poly_box(float x1, float y1, float x2, float y2, float z,float a1, float r1, float g1, float b1,float a2, float r2, float g2, float b2) 
 {
 	pvr_poly_cxt_t	cxt;
@@ -350,7 +350,7 @@ void Menu2D::draw_intro(void)
 
 void Menu2D::draw_genEric(int toplay)
 {
-  printf("je lance le film %d\n",toplay);
+/*  printf("je lance le film %d\n",toplay);
   if(toplay==0)
     {
       video Eric("/rd/video/Eric.MPG");
@@ -386,6 +386,7 @@ void Menu2D::draw_genEric(int toplay)
     vid_shutdown();
     pvr_init(&params);
     Resetfont();
+*/
 }
 
 void Menu2D::draw_gen_font(int choixtexte)
@@ -425,7 +426,7 @@ void Menu2D::draw_gen_font(int choixtexte)
       drawFont("Camera Engine",18,80,205,1.0,1.0,1.0);
       drawFont("Voices",18,80,230,1.0,1.0,1.0);
       drawFont("Specifications",18,80,255,1.0,1.0,1.0);
-      drawFont("\"Demain matin à 15h... C est bon ?\"",18,80,305,1.0,1.0,1.0);
+      drawFont("\"Demain matin ï¿½ï¿½ 15h... C est bon ?\"",18,80,305,1.0,1.0,1.0);
     }
   else if(choixtexte==3)
     {
@@ -541,7 +542,7 @@ void Menu2D::draw_save_init()
     }
 }
 
-/* Affichage des caractéristiques des différents persos*/
+/* Affichage des caractï¿½ï¿½ristiques des diffï¿½ï¿½rents persos*/
 void Menu2D::draw_perso_choisi(void)
 {
   char *temp;
@@ -598,7 +599,7 @@ void Menu2D::draw_perso_choisi(void)
 
 }
 
-/* Affichage à l'écraznde la VMU */
+/* Affichage ï¿½ï¿½ l'ï¿½ï¿½craznde la VMU */
 void Menu2D::vmu_lcd_update(int choixim) {
   if(choixim==0) vmu_set_icon(tex_blanc);
   else if(choixim==1) vmu_set_icon(tex_game);
@@ -609,7 +610,7 @@ void Menu2D::vmu_lcd_update(int choixim) {
   else if(choixim==6) vmu_set_icon(tex_go);
 }
 
-/*Affichage du compte à rebour*/
+/*Affichage du compte ï¿½ï¿½ rebour*/
 void Menu2D::draw_game(void)
 {
   int i,done;
@@ -665,7 +666,7 @@ void Menu2D::draw_game(void)
   }
 }
 
-/*Gestion de l'écriture sur la VMU*/
+/*Gestion de l'ï¿½ï¿½criture sur la VMU*/
 void Menu2D::write_on_vmu() {
   vmu_pkg_t	pkg;
   uint8		data[1024], *pkg_out;
@@ -702,7 +703,7 @@ void Menu2D::write_on_vmu() {
   fs_close(f);
 }
 
-/* Vérifie la présence de fichiers de sauvegarde*/
+/* Vï¿½ï¿½rifie la prï¿½ï¿½sence de fichiers de sauvegarde*/
 int Menu2D::check_savefile(void)
 {
   file_t d;
@@ -742,7 +743,7 @@ void Menu2D::draw_pause()
   pvr_scene_finish();
 }
 
-/*Affiche les différents record sauver sur la VMU à l'écran */
+/*Affiche les diffï¿½ï¿½rents record sauver sur la VMU ï¿½ï¿½ l'ï¿½ï¿½cran */
 void Menu2D::draw_record()
 {
   file_t f;

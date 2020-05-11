@@ -13,19 +13,19 @@
 
 #include "Main.h"
 #include "Init.h"
-#include "PalmTree.h"
+#include "assets/PalmTree.h"
 #include "Landscape.h"
-#include "SkyBox.h"
-#include "StartPane.h"
-#include "TheLittleHouseOnThePrairie.h"
-#include "OisisVehicle.h"
-#include "NoelVehicle.h"
+#include "assets/SkyBox.h"
+#include "assets/StartPane.h"
+#include "assets/TheLittleHouseOnThePrairie.h"
+#include "assets/OisisVehicle.h"
+#include "assets/NoelVehicle.h"
 #include "Vehicle.h"
 #include "move.hpp"
-#include "ogg.h"
-#include "wav.h"
-#include "MomoVehicle.h"
-#include "Caisse.h"
+#include "io/ogg.h"
+#include "io/wav.h"
+#include "assets/MomoVehicle.h"
+#include "assets/Caisse.h"
 
 
 
@@ -56,8 +56,11 @@ void CameraIntro (const Vector3D& camPos, float rotRatio, Camera* cam, Vehicle* 
 
 bool myWorld::Init(int perso)
 {
-	cont_cond_t cond;
-  	uint8	c;
+	/*cont_cond_t cond;
+  	uint8	c;*/
+
+	maple_device_t *cont;
+    cont_state_t *state;
   	GLboolean xp = GL_FALSE;
   	GLboolean yp = GL_FALSE;
      Vehicle *vehicle;
@@ -157,60 +160,77 @@ bool myWorld::Init(int perso)
 	caisse2->shape();
 	/*caisse3->shape();*/
 
-	c = maple_first_controller();
+	//c = maple_first_controller();
+	cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 	bool noRotatingThisFrame = false;
         		
 	while(1)
   	{
   		noRotatingThisFrame = false;
   		
-    	c = maple_first_controller();
-    	ft=f;
-    	if (c == 0)
+    	//c = maple_first_controller();
+		cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
+
+    	ft = f;
+    	if (cont == nullptr)
       		continue;
-    	if (cont_get_cond(c, &cond) < 0)
+
+		state = (cont_state_t *)maple_dev_status(cont);
+    	//if (cont_get_cond(c, &cond) < 0)
+		if (!state)
       		continue;
     
-    	if (!(cond.buttons & CONT_START)) {
+    	//if (!(cond.buttons & CONT_START)) {
+		if (!(state->buttons & CONT_START))
     		sultan.stop();
     		return false;
     	}
     	   
-    	if (!(cond.buttons & CONT_DPAD_LEFT)){
+    	//if (!(cond.buttons & CONT_DPAD_LEFT)){
+		if (!(state->buttons & CONT_DPAD_LEFT)){
 	  		if(f!=NEG){
 	    		vehicle->rotate(ROT_ANGLE, sand);
 	    		cam.move(vehicle->getPosition(), vehicle->getDirection());
 	  		}
     	}
-    	if (!(cond.buttons & CONT_DPAD_RIGHT)) {
-	  		if(f!=NEG){
+    	//if (!(cond.buttons & CONT_DPAD_RIGHT)) {
+		if (!(state->buttons & CONT_DPAD_RIGHT)) {
+	  		if(f != NEG) {
 	    		vehicle->rotate(-ROT_ANGLE, sand);
 	    		cam.move(vehicle->getPosition(), vehicle->getDirection());
 	  		}
     	}
     	
-	brake=0;
-    if (!(cond.buttons & CONT_B))
+	brake = 0;
+    //if (!(cond.buttons & CONT_B))
+	if (!(state->buttons & CONT_B)){
 	  	brake=1;
 	throttle=0;
-    if (!(cond.buttons & CONT_A))
+    //if (!(cond.buttons & CONT_A))
+	if (!(state->buttons & CONT_A))
 		throttle=1;
-    if (!(cond.buttons & CONT_B )&&!(cond.buttons & CONT_X ))
+    //if (!(cond.buttons & CONT_B )&&!(cond.buttons & CONT_X ))
+	if (!(state->buttons & CONT_B )&&!(state->buttons & CONT_X ))
     	screenShot();
-    if (!(cond.buttons & CONT_Y)) {
+
+    //if (!(cond.buttons & CONT_Y)) {
+	if (!(state->buttons & CONT_Y)) {		
     	wav klaxon ("/rd/Klaxon.wav");
     	klaxon.play();
 	}
-    if (cond.ltrig) {
+    //if (cond.ltrig) {
+	if (state->ltrig) {
     	noRotatingThisFrame = true;
  		cam.rotateAroundView(2);
 	}
-    if (cond.rtrig) {
+    //if (cond.rtrig) {
+	if (state->rtrig) {
     	noRotatingThisFrame = true;
 		cam.rotateAroundView(-2);
 	}
      
-     if (!(cond.buttons & CONT_B)&&!(cond.buttons & CONT_X)&&!(cond.buttons & CONT_A)&&!(cond.buttons & CONT_Y)) {
+    //if (!(cond.buttons & CONT_B)&&!(cond.buttons & CONT_X)&&!(cond.buttons & CONT_A)&&!(cond.buttons & CONT_Y)) {
+	if (!(state->buttons & CONT_B)&&!(state->buttons & CONT_X)&&!(state->buttons & CONT_A)&&!(state->buttons & CONT_Y)) {
     		return false;
     }
         

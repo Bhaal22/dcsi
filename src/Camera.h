@@ -65,7 +65,7 @@ class Camera : public Element
   void rotateAroundPoint (const Vector3D& center, float angle, float x, float y, float z);
 
 	//rotates around the view, axis is 0,1,0 and angle is ROTATION_ANGLE * ratio
-	void Camera::rotateAroundView (float ratio);
+	void rotateAroundView (float ratio);
   
 
   /* This will move the camera forward or backward depending on the speed */

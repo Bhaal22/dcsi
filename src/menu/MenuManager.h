@@ -2,8 +2,8 @@
 #define _MENUMANAGERH__
 
 #include "Menu2D.h"
-#include "ogg.h"
-#include "wav.h"
+#include "io/ogg.h"
+#include "io/wav.h"
 
 class MenuManager
 {

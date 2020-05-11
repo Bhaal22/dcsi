@@ -6,10 +6,10 @@
 #include <zlib/zlib.h>
 #include <dcplib/fnt.h>
 #include "alllcdtex.h"
-#include "ogg.h"
-#include "wav.h"
+#include "io/ogg.h"
+#include "io/wav.h"
 #include "perso.h"
-#include "video.h"
+//#include "video.h"
 
 #define menu 0
 #define team 1
@@ -74,7 +74,7 @@ class Menu2D {
 
   private :
     
-    /*Méthodes internes*/
+    /*Mï¿½thodes internes*/
     void draw_alp_tex_box(float x1,float y1,float x2,float y2,float z,int taille,pvr_ptr_t texture,float alpha);
   void drawFont (char * lemot,int taille,int posx,int posy,float r,float g,float b);
   void draw_poly_box(float x1, float y1, float x2, float y2, float z,float a1, float r1, float g1, float b1,float a2, float r2, float g2, float b2);
