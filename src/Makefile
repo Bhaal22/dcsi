@@ -1,12 +1,24 @@
 TARGET = dcsi.elf
-OBJS = romdisk.o  Element.o PalmTree.o  \
-	TheLittleHouseOnThePrairie.o StartPane.o \
-	Camera.o Vehicle.o Landscape.o GraphicalElement.o SkyBox.o BoundingBox.o \
-	OisisVehicle.o Init.o Main.o ogg.o Menu2D.o wav.o Caisse.o MomoVehicle.o NoelVehicle.o game.o MenuManager.o video.o
+OBJS = romdisk.o  Element.o \
+	assets/PalmTree.o  \
+	assets/TheLittleHouseOnThePrairie.o \
+	assets/StartPane.o \
+	Camera.o \
+	assets/Vehicle.o Landscape.o GraphicalElement.o \
+	assets/SkyBox.o BoundingBox.o \
+	OisisVehicle.o Init.o Main.o \
+	io/ogg.o \
+	menu/Menu2D.o \
+	io/wav.o \
+	assets/Caisse.o \
+	assets/MomoVehicle.o \
+	assets/NoelVehicle.o \
+	game.o \
+	menu/MenuManager.o video.o
 #KOS_CFLAGS +=	-DDREAMCAST -I/net/home/m/muller/bin/STLport-4.6/stlport  -I/net/home/m/muller/kos/addons/libjpeg
 
-KOS_CFLAGS += -I../../coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
-KOS_LDFLAGS += -L../../coldet -L../../Libvfdc/lib/
+KOS_CFLAGS += -I. -I../lib/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
+KOS_LDFLAGS += -L../lib/coldet -L../../Libvfdc/lib/
 
 #-I/home/john/formation/Dreamcast/STL/STLport-4.6/stlport -DDREAMCAST 
 
