@@ -43,7 +43,7 @@ clean: rm-elf
 #-lk++
 #-lmpg
 $(TARGET): $(OBJS)
-	kos-c++ -Wall -o $(TARGET) $(OBJS) -lkglx -lvorbis -logg -loggvorbisplay -lcoldet -ljpeg -lpng -lpcx -lz -ldcplib -lm -lkosutils
+	kos-c++ -Wall -o $(TARGET) $(OBJS) -lkglx -loggvorbisplay -lvorbis -logg -lcoldet -ljpeg -lpng -lpcx -lz -ldcplib -lm -lkosutils
 
 #-lk++ -lpng -lpcx -ljpeg -lz -lkmg  -lm -lcoldet 
 

@@ -338,7 +338,7 @@ int MenuManager::MenuLaunch(void)
         if (check_a() && menu2d.Getpos() == 1)
         {
             SelectionMenuSuivant.play();
-            menu2d.draw_record();
+            menu2d.draw_records();
             SelectionMenuPrecedent.play();
         }
         if (check_a() && menu2d.Getpos() == 2)
