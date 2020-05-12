@@ -11,8 +11,7 @@
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 
-#ifndef __MAINH__
-#define __MAINH__
+#pragma once
 
 /* kos include */
 #include <kos.h>
@@ -60,5 +59,3 @@ public:
     };
     static bool Init(int);
 };
-
-#endif

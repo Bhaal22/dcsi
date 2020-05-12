@@ -1,7 +1,6 @@
 /* Camera.h */
 
-#ifndef _CAMERA_H
-#define _CAMERA_H
+#pragma once
 
 #define VIEW_MAGNITUDE 40.0f //the wanted magnitude of the view vect, ie the distance between the camera and the character
 //#define VIEW_MAGNITUDE 30.0f

@@ -1,5 +1,4 @@
-#ifndef __MENU2DH__
-#define __MENU2DH__
+#pragma once
 
 #include <kos.h>
 #include <png/png.h>
@@ -92,5 +91,3 @@ private:
     float poscadrex;
     int filter_mode;
 };
-
-#endif

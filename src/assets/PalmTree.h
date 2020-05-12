@@ -1,3 +1,5 @@
+#pragma once
+
 #include "GraphicalElement.h"
 
 class PalmTree : public GraphicalElement

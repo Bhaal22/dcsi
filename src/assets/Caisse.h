@@ -1,5 +1,4 @@
-#ifndef __CAISSEH__
-#define __CAISSEH__
+#pragma once
 
 #include "GraphicalElement.h"
 
@@ -19,4 +18,3 @@ protected:
     //GLfloat r, g, b;
 };
 
-#endif

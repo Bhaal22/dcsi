@@ -15,8 +15,7 @@
  *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
-#ifndef __WAVH__
-#define __WAVH__
+#pragma once
 
 #include <kos.h>
 
@@ -38,6 +37,3 @@ protected:
     sfxhnd_t fileWav;
 };
 
-//#include "wav.cc"
-
-#endif

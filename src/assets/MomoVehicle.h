@@ -1,5 +1,4 @@
-#ifndef __MOMOH__
-#define __MOMOH__
+#pragma once
 
 #include "Vehicle.h"
 
@@ -12,4 +11,3 @@ public:
     void shape();
 };
 
-#endif

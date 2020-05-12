@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Vehicle.h"
 #include "Landscape.h"
 

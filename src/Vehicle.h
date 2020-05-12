@@ -1,5 +1,4 @@
-#ifndef __VEHICLEH__
-#define __VEHICLEH__
+#pragma once
 
 #include "GraphicalElement.h"
 #include "Landscape.h"
@@ -28,4 +27,3 @@ protected:
     float heightOffset;
 };
 
-#endif

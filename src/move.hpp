@@ -1,5 +1,5 @@
-#ifndef MOVE
-#define MOVE
+#pragma once
+
 //#include"Vector3D.h"
 
 #define g 9.81
@@ -273,13 +273,3 @@ public:
         p->setRear(p, dir, slope);
     }
 };
-
-/***********************************************************************/
-/*class vehicule{
-
-
-
-};
-*/
-
-#endif

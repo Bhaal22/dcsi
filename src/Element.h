@@ -1,5 +1,4 @@
-#ifndef __ELEMENTH__
-#define __ELEMENTH__
+#pragma once
 
 #include "Main.h"
 #include "BoundingBox.h"
@@ -103,4 +102,3 @@ protected:
  	 	bool matrixSet; //if the matrix is set (initialized) ** usefull just for static elements **
 };*/
 
-#endif

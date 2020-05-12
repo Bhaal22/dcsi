@@ -25,10 +25,10 @@ int MenuManager::check_left()
     //if (!(cond.buttons & CONT_DPAD_LEFT)) {
     if (!(state->buttons & CONT_DPAD_LEFT))
     {
-        monmoteur.Setposcadre(monmoteur.Getposcadre() - 1);
-        if (monmoteur.Getposcadre() < 0)
-            monmoteur.Setposcadre(2);
-        monmoteur.Setposcadrex((float)monmoteur.Getposcadre() * 192.0);
+        menu.Setposcadre(menu.Getposcadre() - 1);
+        if (menu.Getposcadre() < 0)
+            menu.Setposcadre(2);
+        menu.Setposcadrex((float)menu.Getposcadre() * 192.0);
         return 1;
     }
 
@@ -60,8 +60,8 @@ int MenuManager::check_right()
     //if (!(cond.buttons & CONT_DPAD_RIGHT)) {
     if (!(state->buttons & CONT_DPAD_RIGHT))
     {
-        monmoteur.Setposcadre((monmoteur.Getposcadre() + 1) % 3);
-        monmoteur.Setposcadrex((float)monmoteur.Getposcadre() * 192.0);
+        menu.Setposcadre((menu.Getposcadre() + 1) % 3);
+        menu.Setposcadrex((float)menu.Getposcadre() * 192.0);
         return 1;
     }
     return 0;
@@ -93,20 +93,20 @@ int MenuManager::check_down()
     {
         wav PassageSuivant("/rd/PassageSuivant.wav");
         PassageSuivant.play();
-        if (monmoteur.Getpos() == 0)
+        if (menu.Getpos() == 0)
         {
-            monmoteur.Setpos(1);
-            monmoteur.Setposy(170.0);
+            menu.Setpos(1);
+            menu.Setposy(170.0);
         }
-        else if (monmoteur.Getpos() == 1)
+        else if (menu.Getpos() == 1)
         {
-            monmoteur.Setpos(2);
-            monmoteur.Setposy(245.0);
+            menu.Setpos(2);
+            menu.Setposy(245.0);
         }
-        if (monmoteur.Getpospause() == 0)
-            monmoteur.Setpospause(1);
+        if (menu.Getpospause() == 0)
+            menu.Setpospause(1);
         else
-            monmoteur.Setpospause(0);
+            menu.Setpospause(0);
         return 1;
     }
     return 0;
@@ -139,20 +139,20 @@ int MenuManager::check_up()
     {
         wav PassageSuivant("/rd/PassageSuivant.wav");
         PassageSuivant.play();
-        if (monmoteur.Getpos() == 2)
+        if (menu.Getpos() == 2)
         {
-            monmoteur.Setpos(1);
-            monmoteur.Setposy(170.0);
+            menu.Setpos(1);
+            menu.Setposy(170.0);
         }
-        else if (monmoteur.Getpos() == 1)
+        else if (menu.Getpos() == 1)
         {
-            monmoteur.Setpos(0);
-            monmoteur.Setposy(85.0);
+            menu.Setpos(0);
+            menu.Setposy(85.0);
         }
-        if (monmoteur.Getpospause() == 0)
-            monmoteur.Setpospause(1);
+        if (menu.Getpospause() == 0)
+            menu.Setpospause(1);
         else
-            monmoteur.Setpospause(0);
+            menu.Setpospause(0);
         return 1;
     }
     return 0;
@@ -240,7 +240,7 @@ int MenuManager::check_y()
     //if (!(cond.buttons & CONT_Y)) {
     if (!(state->buttons & CONT_Y))
     {
-        monmoteur.screenShot();
+        menu.screenShot();
         return 1;
     }
     return 0;
@@ -248,7 +248,7 @@ int MenuManager::check_y()
 
 void MenuManager::IntroLaunch(void)
 {
-    monmoteur.draw_intro();
+    menu.draw_intro();
 }
 
 int MenuManager::MenuLaunch(void)
@@ -272,8 +272,8 @@ int MenuManager::MenuLaunch(void)
         done2 = 0;
         check_down();
         check_up();
-        monmoteur.draw_frame();
-        if (check_a() && monmoteur.Getpos() == 0)
+        menu.draw_frame();
+        if (check_a() && menu.Getpos() == 0)
         {
             SelectionMenuSuivant.play();
             thd_sleep(200);
@@ -289,25 +289,25 @@ int MenuManager::MenuLaunch(void)
                 }
                 check_left();
                 check_right();
-                monmoteur.draw_perso();
+                menu.draw_perso();
                 thd_sleep(110);
                 if (check_a())
                 {
                     if (passe == 0)
                     {
-                        if (monmoteur.Getposcadre() == 0)
+                        if (menu.Getposcadre() == 0)
                         {
                             wav son_carlos("/rd/carlos.wav");
                             son_carlos.play();
                             son_carlos.stop();
                         }
-                        if (monmoteur.Getposcadre() == 1)
+                        if (menu.Getposcadre() == 1)
                         {
                             wav son_momo("/rd/momo.wav");
                             son_momo.play();
                             son_momo.stop();
                         }
-                        if (monmoteur.Getposcadre() == 2)
+                        if (menu.Getposcadre() == 2)
                         {
                             wav son_noel("/rd/noel.wav");
                             son_noel.play();
@@ -330,30 +330,30 @@ int MenuManager::MenuLaunch(void)
                         {
                             done3 = done2 = done = 1;
                         }
-                        monmoteur.draw_perso_choisi();
+                        menu.draw_perso_choisi();
                     }
                 }
             }
         }
-        if (check_a() && monmoteur.Getpos() == 1)
+        if (check_a() && menu.Getpos() == 1)
         {
             SelectionMenuSuivant.play();
-            monmoteur.draw_record();
+            menu.draw_record();
             SelectionMenuPrecedent.play();
         }
-        if (check_a() && monmoteur.Getpos() == 2)
+        if (check_a() && menu.Getpos() == 2)
         {
             SelectionMenuSuivant.play();
             DreamStyle.stop();
             genEric.play(1);
             for (int ind = 0; ind < 5; ind++)
             {
-                monmoteur.draw_genEric(ind);
-                monmoteur.draw_gen_font(ind);
+                menu.draw_genEric(ind);
+                menu.draw_gen_font(ind);
             }
-            monmoteur.draw_gen_font(5);
-            monmoteur.draw_gen_font(6);
-            monmoteur.Resetall();
+            menu.draw_gen_font(5);
+            menu.draw_gen_font(6);
+            menu.Resetall();
             genEric.stop();
             SelectionMenuPrecedent.play();
             DreamStyle.play(1);
@@ -364,6 +364,6 @@ int MenuManager::MenuLaunch(void)
     done = 0;
     DreamStyle.stop();
 
-    monmoteur.draw_game();
-    return monmoteur.Getposcadre();
+    menu.draw_game();
+    return menu.Getposcadre();
 }

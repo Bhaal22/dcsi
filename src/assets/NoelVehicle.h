@@ -1,5 +1,4 @@
-#ifndef __NOELH__
-#define __NOELH__
+#pragma once
 
 #include "Vehicle.h"
 #include "Landscape.h"
@@ -13,4 +12,3 @@ public:
     void shape();
 };
 
-#endif

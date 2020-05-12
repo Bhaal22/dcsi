@@ -1,5 +1,4 @@
-#ifndef _MENUMANAGERH__
-#define _MENUMANAGERH__
+#pragma once
 
 #include "Menu2D.h"
 #include "io/ogg.h"
@@ -16,25 +15,24 @@ public:
     {
         ogg::init();
     };
-    void IntroLaunch(void);
-    int MenuLaunch(void);
-    void Unload(void)
+    void IntroLaunch();
+    int MenuLaunch();
+    void Unload()
     {
         ogg::shutDown();
     };
 
     /*Gestion manette*/
-    int check_left(void);
-    int check_right(void);
-    int check_up(void);
-    int check_down(void);
+    int check_left();
+    int check_right();
+    int check_up();
+    int check_down();
 
-    int check_a(void);
-    int check_b(void);
-    int check_y(void);
+    int check_a();
+    int check_b();
+    int check_y();
 
 private:
-    Menu2D monmoteur;
+    Menu2D menu;
 };
 
-#endif

@@ -5,9 +5,9 @@ pvr_init_params_t params = {
     {PVR_BINSIZE_16, PVR_BINSIZE_0, PVR_BINSIZE_16, PVR_BINSIZE_0, PVR_BINSIZE_0},
 
     /* Vertex buffer size 512K */
-    512 * 512};
+    512 * 512
+};
 
-/*D�claration du constructeur*/
 Menu2D ::Menu2D(void)
 {
     //pvr_init(&params);

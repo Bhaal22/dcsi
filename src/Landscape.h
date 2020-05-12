@@ -1,5 +1,4 @@
-#ifndef __LANDSCAPEH__
-#define __LANDSCAPEH__
+#pragma once
 
 #include "GraphicalElement.h"
 
@@ -39,4 +38,3 @@ protected:
     GLfloat r, g, b;
 };
 
-#endif

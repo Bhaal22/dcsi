@@ -15,8 +15,7 @@
  *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
-#ifndef __OGGH__
-#define __OGGH__
+#pragma once
 
 #include <oggvorbis/sndoggvorbis.h>
 
@@ -41,7 +40,3 @@ public:
 protected:
     char *song;
 };
-
-//#include "ogg.cc"
-
-#endif

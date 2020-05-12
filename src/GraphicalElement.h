@@ -1,5 +1,4 @@
-#ifndef __GRAPHICALELEMENTH__
-#define __GRAPHICALELEMENTH__
+#pragma once
 
 #include "Element.h"
 #include "Main.h"
@@ -32,4 +31,3 @@ protected:
     std::vector<GLuint> listeTexture;
 };
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef _PERSOH___
-#define _PERSOH__
+#pragma once
 
 class Perso
 {
@@ -21,4 +20,3 @@ private:
     char *vehicule;
 };
 
-#endif
