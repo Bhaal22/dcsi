@@ -45,7 +45,7 @@ extern "C"
 #define NJPEG 0
 #define JPEG 1
 
-class myWorld
+class DCSI
 {
 public:
     static void screenShot()

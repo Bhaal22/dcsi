@@ -25,7 +25,7 @@ int main()
 
     while (cont)
     {
-        cont = myWorld::Init(persoChoisi);
+        cont = DCSI::Init(persoChoisi);
         pvr_shutdown();
         persoChoisi = (persoChoisi + 1) % 3;
     }

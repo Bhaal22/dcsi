@@ -51,7 +51,7 @@ void CameraIntro(const Vector3D &camPos, float rotRatio, Camera *cam, Vehicle *v
         cam->rotateAroundView(rotRatio);
 }
 
-bool myWorld::Init(int perso)
+bool DCSI::Init(int perso)
 {
     /*cont_cond_t cond;
   	uint8	c;*/
@@ -81,7 +81,6 @@ bool myWorld::Init(int perso)
         aSpeed[i] = (-0.11 * (float)(7 * (i - NEG)) / (PLUS + NEG) + 2) * 5 * log((float)3 * (float)7 * (i - NEG) / (PLUS + NEG) + 1) * 3.6;
 
     /* Declaration des objets */
-
     SkyBox *skyBox = new SkyBox(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     Landscape *cliff = new Landscape(JPEG, "/rd/terrain.jpg", "/rd/terrain.pcx", 256.0f, 32, 1, 1, 0);
     Landscape *sand = new Landscape(JPEG, "/rd/circuit.jpg", "/rd/circuit.pcx", 450.0f, 30, 4, 1 / 3.0f, -12.0f);

@@ -12,14 +12,14 @@
 class Landscape : public GraphicalElement
 {
 public:
-    Landscape(int, char *, char *, float, int, int, float, float, GLfloat = 1.0f, GLfloat = 1.0f, GLfloat = 1.0f);
+    Landscape(int, const char *, const char *, float, int, int, float, float, GLfloat = 1.0f, GLfloat = 1.0f, GLfloat = 1.0f);
     ~Landscape();
 
     /* Virtual Method */
     void shape();
 
     /* Method for loading a jpeg file */
-    void loadJpeg(char *);
+    void loadJpeg(const char *);
     float getHautPoint(float x, float z);
     void getProjPoint(const Vector3D &vec1, const Vector3D &vec2, Vector3D *vecRes1, Vector3D *vecRes2);
     float getYFromXZ(float x, float z);

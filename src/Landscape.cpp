@@ -10,7 +10,7 @@
  * 					   int subdiv1 : number of subdivision for all the triangles
  * 					   int nbSubDiv : ras
  */
-Landscape::Landscape(int jpeg, char *fileTxrJpg, char *txr, float dim, int subdiv1, int f, float fMult, float fAdd, GLfloat red, GLfloat green, GLfloat blue) : dimension(dim), nbSubdiv(subdiv1), factor(f), factorMult(fMult), factorAdd(fAdd), r(red), g(green), b(blue)
+Landscape::Landscape(int jpeg, const char *fileTxrJpg, const char *txr, float dim, int subdiv1, int f, float fMult, float fAdd, GLfloat red, GLfloat green, GLfloat blue) : dimension(dim), nbSubdiv(subdiv1), factor(f), factorMult(fMult), factorAdd(fAdd), r(red), g(green), b(blue)
 {
     /* Load the JpegFile */
     if (jpeg == JPEG)
@@ -31,7 +31,7 @@ Landscape::Landscape(int jpeg, char *fileTxrJpg, char *txr, float dim, int subdi
 
 Landscape::~Landscape() {}
 
-void Landscape::loadJpeg(char *filename)
+void Landscape::loadJpeg(const char *filename)
 {
     FILE *file;
     struct jpeg_decompress_struct cinfo;
