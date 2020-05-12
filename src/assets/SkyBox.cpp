@@ -2,11 +2,11 @@
 
 SkyBox::SkyBox(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l) : GraphicalElement(x, y, z), width(w), height(h), length(l)
 {
-    createTexturePCX("/rd/skybox/back.pcx", 0);
-    createTexturePCX("/rd/skybox/front.pcx", 1);
-    createTexturePCX("/rd/skybox/top.pcx", 2);
-    createTexturePCX("/rd/skybox/right.pcx", 3);
-    createTexturePCX("/rd/skybox/left.pcx", 4);
+    createTexturePCX("/rd/skybox/back.pcx");
+    createTexturePCX("/rd/skybox/front.pcx");
+    createTexturePCX("/rd/skybox/top.pcx");
+    createTexturePCX("/rd/skybox/right.pcx");
+    createTexturePCX("/rd/skybox/left.pcx");
 }
 
 SkyBox::~SkyBox()

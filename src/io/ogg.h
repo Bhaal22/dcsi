@@ -22,7 +22,7 @@
 class ogg
 {
 public:
-    ogg(char *song);
+    ogg(const char *song);
 
     static void init();
 
@@ -38,5 +38,5 @@ public:
     static void shutDown();
 
 protected:
-    char *song;
+    const char *song;
 };

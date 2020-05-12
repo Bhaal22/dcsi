@@ -7,7 +7,7 @@ GraphicalElement::GraphicalElement(float x, float y, float z) : Element(x, y, z)
  * Parameters : none
  *
  * */
-void GraphicalElement::createTexturePCX(char *fileName, int indiceTex)
+void GraphicalElement::createTexturePCX(const char *fileName)
 {
     kos_img_t img;
     pvr_ptr_t txaddr;
@@ -39,7 +39,7 @@ void GraphicalElement::createTexturePCX(char *fileName, int indiceTex)
  *                        alpha = PNG_FULL_ALPHA or PNG_NO_ALPHA
  *
  * */
-void GraphicalElement::createTexturePNG(char *fileName, int alpha, int indiceTex)
+void GraphicalElement::createTexturePNG(const char *fileName, int alpha)
 {
     kos_img_t img;
     pvr_ptr_t txaddr;
@@ -57,7 +57,6 @@ void GraphicalElement::createTexturePNG(char *fileName, int alpha, int indiceTex
 
     glGenTextures(1, &txr);
 
-    /* insertion in the vector */
     listeTexture.push_back(txr);
     glBindTexture(GL_TEXTURE_2D, listeTexture.back());
 

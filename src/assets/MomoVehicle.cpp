@@ -2,8 +2,8 @@
 
 MomoVehicle::MomoVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfloat yFront, GLfloat zFront, GLfloat w, GLfloat h, GLfloat l, float hOffset) : Vehicle(x, y, z, xFront, yFront, zFront, w, h, l, hOffset)
 {
-    createTexturePNG("/rd/vehicles/momo/stereo.png", PNG_FULL_ALPHA, 0);
-    createTexturePNG("/rd/vehicles/momo/bois.png", PNG_FULL_ALPHA, 1);
+    createTexturePNG("/rd/vehicles/momo/stereo.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/vehicles/momo/bois.png", PNG_FULL_ALPHA);
 }
 
 MomoVehicle::~MomoVehicle()

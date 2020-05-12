@@ -12,38 +12,38 @@ Menu2D ::Menu2D(void)
 {
     //pvr_init(&params);
     pvr_init_defaults();
-    lesTextures = new pvr_ptr_t[12];
+    textures = new pvr_ptr_t[12];
     pers_carlos = new Perso("carlos", 45, "Oisis Island", "Oisis Bottle");
     pers_momo = new Perso("momo", 20, "Massillia", "Skate of McFly");
     pers_noel = new Perso("noel", 500, "North pole", "Magic gift");
 
-    lesTextures[0] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/menubase.png", lesTextures[0], PNG_FULL_ALPHA);
-    lesTextures[1] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/team.png", lesTextures[1], PNG_FULL_ALPHA);
-    lesTextures[2] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/carlos.png", lesTextures[2], PNG_FULL_ALPHA);
-    lesTextures[3] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/momo.png", lesTextures[3], PNG_FULL_ALPHA);
-    lesTextures[4] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/noel.png", lesTextures[4], PNG_FULL_ALPHA);
-    lesTextures[5] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/cadreselect.png", lesTextures[5], PNG_FULL_ALPHA);
-    lesTextures[6] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/1.png", lesTextures[6], PNG_FULL_ALPHA);
-    lesTextures[7] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/2.png", lesTextures[7], PNG_FULL_ALPHA);
-    lesTextures[8] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/3.png", lesTextures[8], PNG_FULL_ALPHA);
-    lesTextures[9] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/Go.png", lesTextures[9], PNG_FULL_ALPHA);
-    lesTextures[10] = pvr_mem_malloc(1024 * 1024 * 2);
-    png_to_texture("/rd/menupics/fondgris.png", lesTextures[10], PNG_FULL_ALPHA);
-    lesTextures[11] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/fondcolor.png", lesTextures[11], PNG_FULL_ALPHA);
+    textures[0] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/menubase.png", textures[0], PNG_FULL_ALPHA);
+    textures[1] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/team.png", textures[1], PNG_FULL_ALPHA);
+    textures[2] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/carlos.png", textures[2], PNG_FULL_ALPHA);
+    textures[3] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/momo.png", textures[3], PNG_FULL_ALPHA);
+    textures[4] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/noel.png", textures[4], PNG_FULL_ALPHA);
+    textures[5] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/cadreselect.png", textures[5], PNG_FULL_ALPHA);
+    textures[6] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/1.png", textures[6], PNG_FULL_ALPHA);
+    textures[7] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/2.png", textures[7], PNG_FULL_ALPHA);
+    textures[8] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/3.png", textures[8], PNG_FULL_ALPHA);
+    textures[9] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/Go.png", textures[9], PNG_FULL_ALPHA);
+    textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
+    png_to_texture("/rd/menupics/fondgris.png", textures[10], PNG_FULL_ALPHA);
+    textures[11] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/fondcolor.png", textures[11], PNG_FULL_ALPHA);
 
-    monText = new fntRenderer();
-    Mesfonts = new fntTexFont("/rd/sorority.txf");
+    font_renderer = new fntRenderer();
+    text_fonts = new fntTexFont("/rd/sorority.txf");
 
     pos = 0;
     posy = 85.0;
@@ -56,42 +56,42 @@ Menu2D ::Menu2D(void)
 /*D�claration du destructeur*/
 Menu2D::~Menu2D(void)
 {
-    delete[] lesTextures;
+    delete[] textures;
 }
 
 void Menu2D::Resetfont(void)
 {
-    monText = new fntRenderer();
-    Mesfonts = new fntTexFont("/rd/sorority.txf");
+    font_renderer = new fntRenderer();
+    text_fonts = new fntTexFont("/rd/sorority.txf");
     filter_mode = 0;
 }
 
 /* Remet � zero tous les attibuts de menu*/
 void Menu2D::Resetall()
 {
-    lesTextures[0] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/menubase.png", lesTextures[0], PNG_FULL_ALPHA);
-    lesTextures[2] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/carlos.png", lesTextures[2], PNG_FULL_ALPHA);
-    lesTextures[3] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/momo.png", lesTextures[3], PNG_FULL_ALPHA);
-    lesTextures[4] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/noel.png", lesTextures[4], PNG_FULL_ALPHA);
-    lesTextures[5] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/cadreselect.png", lesTextures[5], PNG_FULL_ALPHA);
-    lesTextures[6] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/1.png", lesTextures[6], PNG_FULL_ALPHA);
-    lesTextures[7] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/2.png", lesTextures[7], PNG_FULL_ALPHA);
-    lesTextures[8] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/3.png", lesTextures[8], PNG_FULL_ALPHA);
-    lesTextures[9] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/Go.png", lesTextures[9], PNG_FULL_ALPHA);
-    lesTextures[10] = pvr_mem_malloc(1024 * 1024 * 2);
-    png_to_texture("/rd/menupics/fondgris.png", lesTextures[10], PNG_FULL_ALPHA);
+    textures[0] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/menubase.png", textures[0], PNG_FULL_ALPHA);
+    textures[2] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/carlos.png", textures[2], PNG_FULL_ALPHA);
+    textures[3] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/momo.png", textures[3], PNG_FULL_ALPHA);
+    textures[4] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/noel.png", textures[4], PNG_FULL_ALPHA);
+    textures[5] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/cadreselect.png", textures[5], PNG_FULL_ALPHA);
+    textures[6] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/1.png", textures[6], PNG_FULL_ALPHA);
+    textures[7] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/2.png", textures[7], PNG_FULL_ALPHA);
+    textures[8] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/3.png", textures[8], PNG_FULL_ALPHA);
+    textures[9] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/Go.png", textures[9], PNG_FULL_ALPHA);
+    textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
+    png_to_texture("/rd/menupics/fondgris.png", textures[10], PNG_FULL_ALPHA);
 
-    monText = new fntRenderer();
-    Mesfonts = new fntTexFont("/rd/sorority.txf");
+    font_renderer = new fntRenderer();
+    text_fonts = new fntTexFont("/rd/sorority.txf");
 
     pos = 0;
     posy = 85.0;
@@ -108,7 +108,7 @@ void Menu2D::draw_tr_intro(float alpha)
     pvr_poly_hdr_t hdr;
     pvr_vertex_t vert;
 
-    pvr_poly_cxt_txr(&cxt, PVR_LIST_TR_POLY, PVR_TXRFMT_ARGB4444, 512, 512, lesTextures[team], PVR_FILTER_BILINEAR);
+    pvr_poly_cxt_txr(&cxt, PVR_LIST_TR_POLY, PVR_TXRFMT_ARGB4444, 512, 512, textures[team], PVR_FILTER_BILINEAR);
     pvr_poly_compile(&hdr, &cxt);
     pvr_prim(&hdr, sizeof(hdr));
 
@@ -192,13 +192,13 @@ void Menu2D::draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, i
 }
 
 /* Affichage des menus */
-void Menu2D::draw_menu(void)
+void Menu2D::draw_menu()
 {
     pvr_poly_cxt_t cxt;
     pvr_poly_hdr_t hdr;
     pvr_vertex_t vert;
 
-    pvr_poly_cxt_txr(&cxt, PVR_LIST_TR_POLY, PVR_TXRFMT_ARGB4444, 512, 512, lesTextures[menu], PVR_FILTER_BILINEAR);
+    pvr_poly_cxt_txr(&cxt, PVR_LIST_TR_POLY, PVR_TXRFMT_ARGB4444, 512, 512, textures[menu], PVR_FILTER_BILINEAR);
     pvr_poly_compile(&hdr, &cxt);
     pvr_prim(&hdr, sizeof(hdr));
 
@@ -237,21 +237,21 @@ void Menu2D::draw_menu(void)
 }
 
 /*Affichage du texte*/
-void Menu2D::drawFont(char *lemot, int taille, int posx, int posy, float r, float g, float b)
+void Menu2D::drawFont(const char *word, int size, int posx, int posy, float r, float g, float b)
 {
-    monText->setFilterMode(filter_mode);
+    font_renderer->setFilterMode(filter_mode);
 
-    monText->setFont(Mesfonts);
-    monText->setPointSize(taille);
+    font_renderer->setFont(text_fonts);
+    font_renderer->setPointSize(size);
 
-    monText->begin();
-    monText->setColor(r, g, b);
-    monText->start2f(posx, posy);
-    monText->puts(lemot);
-    monText->end();
+    font_renderer->begin();
+    font_renderer->setColor(r, g, b);
+    font_renderer->start2f(posx, posy);
+    font_renderer->puts(word);
+    font_renderer->end();
 }
 
-/*affichage d'une box color��e*/
+/*display colored box*/
 void Menu2D::draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2)
 {
     pvr_poly_cxt_t cxt;
@@ -293,8 +293,7 @@ void Menu2D::draw_poly_box(float x1, float y1, float x2, float y2, float z, floa
     pvr_prim(&vert, sizeof(vert));
 }
 
-/* Affichage de l'introduction*/
-void Menu2D::draw_intro(void)
+void Menu2D::draw_intro()
 {
     float alpha = 0.0;
     int i, done = 0;
@@ -335,7 +334,7 @@ void Menu2D::draw_intro(void)
         pvr_wait_ready();
         pvr_scene_begin();
         pvr_list_begin(PVR_LIST_TR_POLY);
-        draw_alp_tex_box(0.0, 0.0, 640.0, 600.0, 0.1, 512, lesTextures[fondcolor], 1.0);
+        draw_alp_tex_box(0.0, 0.0, 640.0, 600.0, 0.1, 512, textures[fondcolor], 1.0);
         if (cpt < 75)
             drawFont("Press Start !", 30, 180, 350, 0.4, 0.7, 0.93);
         pvr_list_finish();
@@ -476,7 +475,7 @@ void Menu2D::draw_gen_font(int choixtexte)
 }
 
 /*affichage du menu de selection des personnages*/
-void Menu2D::draw_perso(void)
+void Menu2D::draw_perso()
 {
     pvr_wait_ready();
     pvr_scene_begin();
@@ -486,12 +485,12 @@ void Menu2D::draw_perso(void)
     pvr_list_finish();
 
     pvr_list_begin(PVR_LIST_TR_POLY);
-    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, lesTextures[fondgris], 1.0);
+    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, textures[fondgris], 1.0);
     draw_poly_box(30.0f, 30.0f, 610.0f, 450.0f, 0.1f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.8f, 0.8f, 0.8f);
-    draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, lesTextures[carlos], 1.0);
-    draw_alp_tex_box(192.0, 0.0, 448.0, 256.0, 1.0, 256, lesTextures[momo], 1.0);
-    draw_alp_tex_box(384.0, 0.0, 640.0, 256.0, 1.0, 256, lesTextures[noel], 1.0);
-    draw_alp_tex_box(poscadrex, 0.0, poscadrex + 256.0, 256.0, 1.0, 256, lesTextures[select], 1.0);
+    draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[carlos], 1.0);
+    draw_alp_tex_box(192.0, 0.0, 448.0, 256.0, 1.0, 256, textures[momo], 1.0);
+    draw_alp_tex_box(384.0, 0.0, 640.0, 256.0, 1.0, 256, textures[noel], 1.0);
+    draw_alp_tex_box(poscadrex, 0.0, poscadrex + 256.0, 256.0, 1.0, 256, textures[select], 1.0);
     if (poscadre == 0)
         drawFont("Carlos", 25, 270, 320, 0.0, 0.0, 0.0);
     else if (poscadre == 1)
@@ -513,7 +512,7 @@ void Menu2D::draw_frame(void)
     pvr_list_finish();
 
     pvr_list_begin(PVR_LIST_TR_POLY);
-    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, lesTextures[fondgris], 1.0);
+    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, textures[fondgris], 1.0);
     draw_menu();
     draw_poly_box(80.0f, posy, 560.0f, posy + 40.0f, 1.1f, 0.4f, 1.0f, 0.9f, 0.1f, 0.4f, 1.0f, 0.9f, 0.1f);
     pvr_list_finish();
@@ -560,7 +559,7 @@ void Menu2D::draw_perso_choisi(void)
     pvr_list_finish();
 
     pvr_list_begin(PVR_LIST_TR_POLY);
-    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, lesTextures[fondgris], 1.0);
+    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, textures[fondgris], 1.0);
     draw_poly_box(30.0f, 30.0f, 610.0f, 450.0f, 0.1f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.8f, 0.8f, 0.8f);
     drawFont("Name", 25, 150, 256, 0.0, 0.0, 0.0);
     drawFont("Age:", 25, 150, 286, 0.0, 0.0, 0.0);
@@ -570,7 +569,7 @@ void Menu2D::draw_perso_choisi(void)
     {
 
         sprintf(temp, "%d", pers_carlos->GetAge());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, lesTextures[carlos], 1.0);
+        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[carlos], 1.0);
         drawFont(pers_carlos->GetNom(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
         drawFont(pers_carlos->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
@@ -580,7 +579,7 @@ void Menu2D::draw_perso_choisi(void)
     {
 
         sprintf(temp, "%d", pers_momo->GetAge());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, lesTextures[momo], 1.0);
+        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[momo], 1.0);
         drawFont(pers_momo->GetNom(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
         drawFont(pers_momo->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
@@ -590,7 +589,7 @@ void Menu2D::draw_perso_choisi(void)
     {
 
         sprintf(temp, "%d", pers_noel->GetAge());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, lesTextures[noel], 1.0);
+        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[noel], 1.0);
         drawFont(pers_noel->GetNom(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
         drawFont(pers_noel->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
@@ -636,19 +635,19 @@ void Menu2D::draw_game(void)
         draw_poly_box(1.0f, 1.0f, 640.0f, 480.0f, 0.1f, 0.99f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
         if (i == 0)
         {
-            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, lesTextures[three], 1.0);
+            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, textures[three], 1.0);
         }
         if (i == 1)
         {
             wav c1("/rd/3.wav");
             c1.play();
-            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, lesTextures[two], 1.0);
+            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, textures[two], 1.0);
             vmu_lcd_update(5);
             c1.stop();
         }
         if (i == 2)
         {
-            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, lesTextures[one], 1.0);
+            draw_alp_tex_box(288.0, 208.0, 352.0, 272.0, 1.0, 64, textures[one], 1.0);
             wav c2("/rd/2.wav");
             c2.play();
             vmu_lcd_update(4);
@@ -656,7 +655,7 @@ void Menu2D::draw_game(void)
         }
         if (i == 3)
         {
-            draw_alp_tex_box(192.0, 112.0, 448.0, 368.0, 1.0, 256, lesTextures[go], 1.0);
+            draw_alp_tex_box(192.0, 112.0, 448.0, 368.0, 1.0, 256, textures[go], 1.0);
             wav c3("/rd/1.wav");
             c3.play();
             vmu_lcd_update(3);
@@ -750,7 +749,7 @@ void Menu2D::draw_pause()
 
     pvr_list_begin(PVR_LIST_TR_POLY);
 
-    draw_alp_tex_box(192.0, 112.0, 448.0, 320.0, 0.1, 256, lesTextures[pause], 0.6);
+    draw_alp_tex_box(192.0, 112.0, 448.0, 320.0, 0.1, 256, textures[pause], 0.6);
     draw_poly_box(192.0, 172.0 + pospause * 45, 448.0f, 172 + pospause * 45 + 20.0f, 1.1f, 0.4f, 1.0f, 0.9f, 0.1f, 0.4f, 1.0f, 0.9f, 0.1f);
 
     pvr_list_finish();
@@ -864,27 +863,27 @@ void Menu2D::draw_record()
         pvr_list_finish();
 
         pvr_list_begin(PVR_LIST_TR_POLY);
-        draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, lesTextures[fondgris], 1.0);
+        draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, textures[fondgris], 1.0);
         if (!strcmp(nom1, "mom"))
-            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, lesTextures[momo], 1.0);
+            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, textures[momo], 1.0);
         else if (!strcmp(nom1, "noe"))
-            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, lesTextures[noel], 1.0);
+            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, textures[noel], 1.0);
         else if (!strcmp(nom1, "car"))
-            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, lesTextures[carlos], 1.0);
+            draw_alp_tex_box(180.0, 130.0, 244.0, 194.0, 1.0, 256, textures[carlos], 1.0);
 
         if (!strcmp(nom2, "mom"))
-            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, lesTextures[momo], 1.0);
+            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, textures[momo], 1.0);
         else if (!strcmp(nom2, "noe"))
-            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, lesTextures[noel], 1.0);
+            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, textures[noel], 1.0);
         else if (!strcmp(nom2, "car"))
-            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, lesTextures[carlos], 1.0);
+            draw_alp_tex_box(180.0, 170.0, 244.0, 234.0, 1.0, 256, textures[carlos], 1.0);
 
         if (!strcmp(nom3, "mom"))
-            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, lesTextures[momo], 1.0);
+            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, textures[momo], 1.0);
         else if (!strcmp(nom3, "noe"))
-            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, lesTextures[noel], 1.0);
+            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, textures[noel], 1.0);
         else if (!strcmp(nom3, "car"))
-            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, lesTextures[carlos], 1.0);
+            draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, textures[carlos], 1.0);
 
         drawFont("Records", 25, 220, 110, 0.0, 0.0, 0.0);
         drawFont(mot1, 25, 240, 180, 0.0, 0.0, 0.0);

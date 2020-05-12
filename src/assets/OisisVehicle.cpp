@@ -2,9 +2,9 @@
 
 OisisVehicle::OisisVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfloat yFront, GLfloat zFront, GLfloat w, GLfloat h, GLfloat l, float hOffset) : Vehicle(x, y, z, xFront, yFront, zFront, w, h, l, hOffset)
 {
-    createTexturePNG("/rd/vehicles/oisis/oisis.PNG", PNG_FULL_ALPHA, 0);
-    createTexturePNG("/rd/vehicles/oisis/bouchon.png", PNG_FULL_ALPHA, 1);
-    createTexturePNG("/rd/vehicles/oisis/orange.png", PNG_FULL_ALPHA, 2);
+    createTexturePNG("/rd/vehicles/oisis/oisis.PNG", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/vehicles/oisis/bouchon.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/vehicles/oisis/orange.png", PNG_FULL_ALPHA);
 }
 
 OisisVehicle::~OisisVehicle()

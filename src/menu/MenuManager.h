@@ -7,22 +7,22 @@
 class MenuManager
 {
 public:
-    MenuManager(){};
-    ~MenuManager(){};
+    MenuManager() {};
+    ~MenuManager() {};
 
-    /* Lancement Introduction*/
-    void Init(void)
+    void Init()
     {
         ogg::init();
     };
     void IntroLaunch();
     int MenuLaunch();
+
     void Unload()
     {
         ogg::shutDown();
     };
 
-    /*Gestion manette*/
+private:
     int check_left();
     int check_right();
     int check_up();

@@ -2,8 +2,8 @@
 
 NoelVehicle::NoelVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfloat yFront, GLfloat zFront, GLfloat w, GLfloat h, GLfloat l, float hOffset) : Vehicle(x, y, z, xFront, yFront, zFront, w, h, l, hOffset)
 {
-    createTexturePNG("/rd/vehicles/noel/traineau.png", PNG_FULL_ALPHA, 0);
-    createTexturePNG("/rd/vehicles/noel/dessus.png", PNG_FULL_ALPHA, 1);
+    createTexturePNG("/rd/vehicles/noel/traineau.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/vehicles/noel/dessus.png", PNG_FULL_ALPHA);
 }
 
 NoelVehicle::~NoelVehicle()

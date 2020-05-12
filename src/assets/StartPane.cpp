@@ -2,9 +2,9 @@
 
 StartPane::StartPane(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l) : GraphicalElement(x, y, z), width(w), height(h), length(l)
 {
-    createTexturePNG("/rd/porte15.png", PNG_FULL_ALPHA, 0);
-    createTexturePNG("/rd/flamme.png", PNG_FULL_ALPHA, 1);
-    createTexturePNG("/rd/start.png", PNG_FULL_ALPHA, 2);
+    createTexturePNG("/rd/porte15.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/flamme.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/start.png", PNG_FULL_ALPHA);
 }
 
 StartPane::~StartPane()

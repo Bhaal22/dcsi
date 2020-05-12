@@ -24,7 +24,7 @@ Landscape::Landscape(int jpeg, char *fileTxrJpg, char *txr, float dim, int subdi
                 image[i][j] = fAdd;
     }
 
-    createTexturePCX(txr, listeTexture.size());
+    createTexturePCX(txr);
 
     pas = dimension / nbSubdiv;
 }

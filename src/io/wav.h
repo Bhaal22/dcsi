@@ -22,7 +22,7 @@
 class wav
 {
 public:
-    wav(char *song);
+    wav(const char *song);
 
     void play(int vol = 255, int pan = 128);
     /* Unload a single sample */

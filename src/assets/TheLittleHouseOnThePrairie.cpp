@@ -2,10 +2,10 @@
 
 TheLittleHouseOnThePrairie::TheLittleHouseOnThePrairie(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l) : GraphicalElement(x, y, z), width(w), height(h), length(l)
 {
-    createTexturePNG("/rd/bois02.png", PNG_FULL_ALPHA, 0);
-    createTexturePNG("/rd/porte15.png", PNG_FULL_ALPHA, 1);
-    createTexturePNG("/rd/desert05.png", PNG_FULL_ALPHA, 2);
-    createTexturePCX("/rd/bois24.pcx", 3);
+    createTexturePNG("/rd/bois02.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/porte15.png", PNG_FULL_ALPHA);
+    createTexturePNG("/rd/desert05.png", PNG_FULL_ALPHA);
+    createTexturePCX("/rd/bois24.pcx");
 }
 
 TheLittleHouseOnThePrairie::~TheLittleHouseOnThePrairie()

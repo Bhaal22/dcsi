@@ -20,8 +20,8 @@ public:
     virtual void shape() = 0;
 
     /* Methods for loading texture */
-    void createTexturePCX(char *, int);
-    void createTexturePNG(char *, int, int);
+    void createTexturePCX(const char *);
+    void createTexturePNG(const char *, int);
 
     /* Display the Graphical Element */
     void displayElement();
