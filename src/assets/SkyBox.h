@@ -2,16 +2,13 @@
 
 class SkyBox : public GraphicalElement
 {
-	public:
+public:
+    SkyBox(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+    ~SkyBox();
 
-		SkyBox(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
-		~SkyBox();
-		
-		void shape();
-	protected:
-	
-		void quad(int);
-		GLfloat width, height, length;
-	
+    void shape();
 
+protected:
+    void quad(int);
+    GLfloat width, height, length;
 };

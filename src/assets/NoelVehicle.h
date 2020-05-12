@@ -6,13 +6,11 @@
 
 class NoelVehicle : public Vehicle
 {
-	public:
+public:
+    NoelVehicle(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, float);
+    ~NoelVehicle();
 
-	NoelVehicle(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, float);
-	~NoelVehicle();
-	
-	void shape();
+    void shape();
 };
 
 #endif
-

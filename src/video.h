@@ -6,19 +6,20 @@
 # version - v1.0
 #
 # (c) 2004 DreamTeamCast
-# 
+#
 #--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 
-class video {
- public :
- video(char * v);
- 
- void play (int loop = 1);  
- 
- protected:
- char *vid;
+class video
+{
+public:
+    video(char *v);
 
- private:
- static int FrameCB();
+    void play(int loop = 1);
+
+protected:
+    char *vid;
+
+private:
+    static int FrameCB();
 };

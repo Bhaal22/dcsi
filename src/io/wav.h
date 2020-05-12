@@ -12,7 +12,7 @@
  * version - v1.0
  *
  * (c) 2004 DreamTeamCast
- * 
+ *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 #ifndef __WAVH__
@@ -20,20 +20,21 @@
 
 #include <kos.h>
 
-class wav {
-  public :
-    wav(char * song);
-  
-  void play (int vol = 255, int pan = 128);
-  /* Unload a single sample */
-  void unload();
+class wav
+{
+public:
+    wav(char *song);
 
-  /* Unload all loaded samples and free their SPU RAM */
-  static void unload_all();
-  
-  void stop();
+    void play(int vol = 255, int pan = 128);
+    /* Unload a single sample */
+    void unload();
 
-  protected :
+    /* Unload all loaded samples and free their SPU RAM */
+    static void unload_all();
+
+    void stop();
+
+protected:
     sfxhnd_t fileWav;
 };
 

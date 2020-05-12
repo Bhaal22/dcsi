@@ -6,11 +6,11 @@ KOS_INIT_ROMDISK(romdisk);
 int main(void)
 {
 
-  MenuManager lemenu;
+    MenuManager lemenu;
 
-  lemenu.Init();
-  lemenu.IntroLaunch();
-  lemenu.MenuLaunch();
-  lemenu.Unload();
-  return 0;
+    lemenu.Init();
+    lemenu.IntroLaunch();
+    lemenu.MenuLaunch();
+    lemenu.Unload();
+    return 0;
 }

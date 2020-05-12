@@ -12,7 +12,7 @@
  * version - v1.0
  *
  * (c) 2004 DreamTeamCast
- * 
+ *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 
@@ -20,20 +20,23 @@
 #include <oggvorbis/sndoggvorbis.h>
 #include "wav.h"
 
-wav::wav(char * song) {  
-  fileWav = snd_sfx_load(song);
+wav::wav(char *song)
+{
+    fileWav = snd_sfx_load(song);
 }
 
-void wav::play (int vol, int pan) {
-  snd_sfx_play(fileWav,vol, pan);
+void wav::play(int vol, int pan)
+{
+    snd_sfx_play(fileWav, vol, pan);
 }
 
 /* Unload a single sample */
-void wav::unload() {snd_sfx_unload(fileWav);}
+void wav::unload() { snd_sfx_unload(fileWav); }
 
 /* Unload all loaded samples and free their SPU RAM */
-void wav::unload_all() {snd_sfx_unload_all();}
+void wav::unload_all() { snd_sfx_unload_all(); }
 
-void wav::stop() {
-  sndoggvorbis_stop();
+void wav::stop()
+{
+    sndoggvorbis_stop();
 }

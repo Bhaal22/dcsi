@@ -2,14 +2,12 @@
 
 class TheLittleHouseOnThePrairie : public GraphicalElement
 {
-	public:
+public:
+    TheLittleHouseOnThePrairie(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+    ~TheLittleHouseOnThePrairie();
 
-		TheLittleHouseOnThePrairie(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
-		~TheLittleHouseOnThePrairie();
-		
-		void shape();
-		
-		
-	protected:
-		GLfloat width, height, length;
+    void shape();
+
+protected:
+    GLfloat width, height, length;
 };

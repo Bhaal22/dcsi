@@ -2,13 +2,12 @@
 
 class StartPane : public GraphicalElement
 {
-	public:
+public:
+    StartPane(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+    ~StartPane();
 
-		StartPane(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
-		~StartPane();
-		
-		void shape();
-	
-	protected:
-		GLfloat width, height, length;
+    void shape();
+
+protected:
+    GLfloat width, height, length;
 };
