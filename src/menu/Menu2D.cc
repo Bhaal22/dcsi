@@ -685,8 +685,7 @@ void Menu2D::write_on_vmu()
     int pkg_size;
     int i, j;
     file_t f;
-    char *mot;
-    mot = "mom 1.10.123 noe 1.12.198 car 1.15.356";
+    const char *mot = "mom 1.10.123 noe 1.12.198 car 1.15.356";
 
     strcpy(pkg.desc_short, "DCSI");
     strcpy(pkg.desc_long, "Driving Curse Syndrom : Ignition");

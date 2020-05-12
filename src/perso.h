@@ -4,19 +4,24 @@ class Perso
 {
 
 public:
-    Perso(char *sonnom, int sonage, char *sonpays, char *sonve) : nom(sonnom), age(sonage), pays(sonpays), vehicule(sonve){};
+    Perso(const char *name, 
+        int age, 
+        const char *country, 
+        const char *vehicle) : 
+        name(name), 
+        age(age), 
+        country(country), vehicule(vehicle){};
     ~Perso(){};
 
-    /* Modificateurs */
-    char *GetNom(void) { return nom; }
-    int GetAge(void) { return age; }
-    char *GetPays(void) { return pays; }
-    char *GetVehicule(void) { return vehicule; }
+    const char *GetNom() { return name; }
+    int GetAge() { return age; }
+    const char *GetPays() { return country; }
+    const char *GetVehicule() { return vehicule; }
 
 private:
-    char *nom;
+    const char *name;
     int age;
-    char *pays;
-    char *vehicule;
+    const char *country;
+    const char *vehicule;
 };
 
