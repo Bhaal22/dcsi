@@ -40,7 +40,7 @@ public:
     void draw_frame();
     void draw_game();
     void draw_save_init();
-    void draw_record();
+    void draw_records();
     void draw_pause();
     void draw_perso_choisi();
     void draw_genEric(int);

@@ -549,7 +549,7 @@ void Menu2D::draw_save_init()
 /* Affichage des caract��ristiques des diff��rents persos*/
 void Menu2D::draw_perso_choisi(void)
 {
-    char *temp;
+    char temp[10];
 
     pvr_wait_ready();
     pvr_scene_begin();
@@ -567,7 +567,6 @@ void Menu2D::draw_perso_choisi(void)
     drawFont("Vehicule:", 25, 150, 346, 0.0, 0.0, 0.0);
     if (poscadre == 0)
     {
-
         sprintf(temp, "%d", pers_carlos->GetAge());
         draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[carlos], 1.0);
         drawFont(pers_carlos->GetNom(), 25, 320, 256, 0.0, 0.0, 0.0);
@@ -577,7 +576,6 @@ void Menu2D::draw_perso_choisi(void)
     }
     if (poscadre == 1)
     {
-
         sprintf(temp, "%d", pers_momo->GetAge());
         draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[momo], 1.0);
         drawFont(pers_momo->GetNom(), 25, 320, 256, 0.0, 0.0, 0.0);
@@ -677,7 +675,6 @@ void Menu2D::draw_game(void)
     }
 }
 
-/*Gestion de l'��criture sur la VMU*/
 void Menu2D::write_on_vmu()
 {
     vmu_pkg_t pkg;
@@ -755,8 +752,7 @@ void Menu2D::draw_pause()
     pvr_scene_finish();
 }
 
-/*Affiche les diff��rents record sauver sur la VMU �� l'��cran */
-void Menu2D::draw_record()
+void Menu2D::draw_records()
 {
     file_t f;
     char buff[1024];
