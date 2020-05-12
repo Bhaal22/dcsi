@@ -12,12 +12,13 @@
  * version - v1.0
  *
  * (c) 2004 DreamTeamCast
- * 
+ *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 
-#ifdef __cplusplus      //include the jpeg library as a C file.
-extern "C"{
+#ifdef __cplusplus //include the jpeg library as a C file.
+extern "C"
+{
 #endif
 #include <oggvorbis/sndoggvorbis.h>
 #ifdef __cplusplus
@@ -26,37 +27,47 @@ extern "C"{
 
 #include "ogg.h"
 
-ogg::ogg(char * s) 
-  : song(s) {}
-
-void ogg::init() {
-  sndoggvorbis_init();
+ogg::ogg(char *s)
+    : song(s)
+{
 }
 
-void ogg::play (int loop) {
-  sndoggvorbis_start(song,loop);
+void ogg::init()
+{
+    sndoggvorbis_init();
 }
 
-char * ogg::getArtist() {
-  sndoggvorbis_getartist();
+void ogg::play(int loop)
+{
+    sndoggvorbis_start(song, loop);
 }
 
-char * ogg::getTitle() {
-  sndoggvorbis_gettitle();  
+char *ogg::getArtist()
+{
+    sndoggvorbis_getartist();
 }
 
-char * ogg::getGenre() {
-  sndoggvorbis_getgenre();
+char *ogg::getTitle()
+{
+    sndoggvorbis_gettitle();
 }
 
-void ogg::setVolume(int vol) {
-  sndoggvorbis_volume(vol);
+char *ogg::getGenre()
+{
+    sndoggvorbis_getgenre();
 }
 
-void ogg::stop() {
-  sndoggvorbis_stop();
+void ogg::setVolume(int vol)
+{
+    sndoggvorbis_volume(vol);
 }
 
-void ogg::shutDown() {
-  sndoggvorbis_shutdown();
+void ogg::stop()
+{
+    sndoggvorbis_stop();
+}
+
+void ogg::shutDown()
+{
+    sndoggvorbis_shutdown();
 }

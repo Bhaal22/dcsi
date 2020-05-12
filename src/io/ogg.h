@@ -12,7 +12,7 @@
  * version - v1.0
  *
  * (c) 2004 DreamTeamCast
- * 
+ *
  *--------------------=+ Drinving Curse Syndrom : Ignition +=--------------------
 */
 #ifndef __OGGH__
@@ -20,28 +20,28 @@
 
 #include <oggvorbis/sndoggvorbis.h>
 
-class ogg{
- public :
- ogg(char * song);
- 
- static void init();
- 
- void play (int loop);
- 
- char * getArtist();
- char * getTitle();
- char * getGenre();   
- 
- void setVolume(int vol);
-   
- void stop();
- static void shutDown();
- 
- protected:
- char *song;
+class ogg
+{
+public:
+    ogg(char *song);
+
+    static void init();
+
+    void play(int loop);
+
+    char *getArtist();
+    char *getTitle();
+    char *getGenre();
+
+    void setVolume(int vol);
+
+    void stop();
+    static void shutDown();
+
+protected:
+    char *song;
 };
 
 //#include "ogg.cc"
-
 
 #endif

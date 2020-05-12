@@ -7,32 +7,29 @@
 #include <vector>
 //#include "Texture.h"
 
-
 class GraphicalElement : public Element
 {
-	public:
+public:
+    /* Constructor */
+    GraphicalElement(float, float, float);
+    GraphicalElement(){};
 
-		/* Constructor */
-		GraphicalElement(float, float, float);
-		GraphicalElement() {};
-		
-		/*  Destructor */
-		virtual ~GraphicalElement() { }
-	
-		/* Virtual Method for painting the Element */
-		virtual void shape() = 0;
-		
-		/* Methods for loading texture */
-		void createTexturePCX(char *, int);
-		void createTexturePNG(char *, int, int);
-		
-		/* Display the Graphical Element */
-		void displayElement();
-	
-	protected:
-		GLuint displayList;
-		std::vector<GLuint> listeTexture;
+    /*  Destructor */
+    virtual ~GraphicalElement() {}
+
+    /* Virtual Method for painting the Element */
+    virtual void shape() = 0;
+
+    /* Methods for loading texture */
+    void createTexturePCX(char *, int);
+    void createTexturePNG(char *, int, int);
+
+    /* Display the Graphical Element */
+    void displayElement();
+
+protected:
+    GLuint displayList;
+    std::vector<GLuint> listeTexture;
 };
-
 
 #endif

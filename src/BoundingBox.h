@@ -1,6 +1,6 @@
-class BoundingBox{
+class BoundingBox
+{
 public:
-
-	BoundingBox();
-	~BoundingBox();
+    BoundingBox();
+    ~BoundingBox();
 };

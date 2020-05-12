@@ -2,25 +2,24 @@
 
 Element::~Element()
 {
-        delete box;
+    delete box;
 }
-
 
 inline const BoundingBox *Element::getBoundingBox()
 {
-        return box;
+    return box;
 }
 
-Vector3D& Element::getPosition()
+Vector3D &Element::getPosition()
 {
-	return position;
+    return position;
 }
 
 /*void Element::setMatrix (float newMatrix[16])
 {
-	if (!isStatic || (isStatic && !matrixSet)) 
+	if (!isStatic || (isStatic && !matrixSet))
 	{
     	matrixSet = true;
-    	box->setTransform(newMatrix); 
+    	box->setTransform(newMatrix);
   	}
 }*/
