@@ -20,7 +20,7 @@
 #include <oggvorbis/sndoggvorbis.h>
 #include "wav.h"
 
-wav::wav(char *song)
+wav::wav(const char *song)
 {
     fileWav = snd_sfx_load(song);
 }

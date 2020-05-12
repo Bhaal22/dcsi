@@ -33,6 +33,6 @@ private:
     int check_y();
 
 private:
-    Menu2D menu;
+    Menu2D menu2d;
 };
 

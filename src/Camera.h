@@ -86,4 +86,3 @@ private:
     //  bool hasCollided (const Vector3D& newView,  std::vector<Element&>& listOtherObjects, const Vector3D& moveVec);
 };
 
-#endif

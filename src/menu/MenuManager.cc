@@ -25,10 +25,10 @@ int MenuManager::check_left()
     //if (!(cond.buttons & CONT_DPAD_LEFT)) {
     if (!(state->buttons & CONT_DPAD_LEFT))
     {
-        menu.Setposcadre(menu.Getposcadre() - 1);
-        if (menu.Getposcadre() < 0)
-            menu.Setposcadre(2);
-        menu.Setposcadrex((float)menu.Getposcadre() * 192.0);
+        menu2d.Setposcadre(menu2d.Getposcadre() - 1);
+        if (menu2d.Getposcadre() < 0)
+            menu2d.Setposcadre(2);
+        menu2d.Setposcadrex((float)menu2d.Getposcadre() * 192.0);
         return 1;
     }
 
@@ -60,8 +60,8 @@ int MenuManager::check_right()
     //if (!(cond.buttons & CONT_DPAD_RIGHT)) {
     if (!(state->buttons & CONT_DPAD_RIGHT))
     {
-        menu.Setposcadre((menu.Getposcadre() + 1) % 3);
-        menu.Setposcadrex((float)menu.Getposcadre() * 192.0);
+        menu2d.Setposcadre((menu2d.Getposcadre() + 1) % 3);
+        menu2d.Setposcadrex((float)menu2d.Getposcadre() * 192.0);
         return 1;
     }
     return 0;
@@ -93,20 +93,20 @@ int MenuManager::check_down()
     {
         wav PassageSuivant("/rd/PassageSuivant.wav");
         PassageSuivant.play();
-        if (menu.Getpos() == 0)
+        if (menu2d.Getpos() == 0)
         {
-            menu.Setpos(1);
-            menu.Setposy(170.0);
+            menu2d.Setpos(1);
+            menu2d.Setposy(170.0);
         }
-        else if (menu.Getpos() == 1)
+        else if (menu2d.Getpos() == 1)
         {
-            menu.Setpos(2);
-            menu.Setposy(245.0);
+            menu2d.Setpos(2);
+            menu2d.Setposy(245.0);
         }
-        if (menu.Getpospause() == 0)
-            menu.Setpospause(1);
+        if (menu2d.Getpospause() == 0)
+            menu2d.Setpospause(1);
         else
-            menu.Setpospause(0);
+            menu2d.Setpospause(0);
         return 1;
     }
     return 0;
@@ -139,20 +139,20 @@ int MenuManager::check_up()
     {
         wav PassageSuivant("/rd/PassageSuivant.wav");
         PassageSuivant.play();
-        if (menu.Getpos() == 2)
+        if (menu2d.Getpos() == 2)
         {
-            menu.Setpos(1);
-            menu.Setposy(170.0);
+            menu2d.Setpos(1);
+            menu2d.Setposy(170.0);
         }
-        else if (menu.Getpos() == 1)
+        else if (menu2d.Getpos() == 1)
         {
-            menu.Setpos(0);
-            menu.Setposy(85.0);
+            menu2d.Setpos(0);
+            menu2d.Setposy(85.0);
         }
-        if (menu.Getpospause() == 0)
-            menu.Setpospause(1);
+        if (menu2d.Getpospause() == 0)
+            menu2d.Setpospause(1);
         else
-            menu.Setpospause(0);
+            menu2d.Setpospause(0);
         return 1;
     }
     return 0;
@@ -240,7 +240,7 @@ int MenuManager::check_y()
     //if (!(cond.buttons & CONT_Y)) {
     if (!(state->buttons & CONT_Y))
     {
-        menu.screenShot();
+        menu2d.screenShot();
         return 1;
     }
     return 0;
@@ -248,7 +248,7 @@ int MenuManager::check_y()
 
 void MenuManager::IntroLaunch(void)
 {
-    menu.draw_intro();
+    menu2d.draw_intro();
 }
 
 int MenuManager::MenuLaunch(void)
@@ -272,8 +272,8 @@ int MenuManager::MenuLaunch(void)
         done2 = 0;
         check_down();
         check_up();
-        menu.draw_frame();
-        if (check_a() && menu.Getpos() == 0)
+        menu2d.draw_frame();
+        if (check_a() && menu2d.Getpos() == 0)
         {
             SelectionMenuSuivant.play();
             thd_sleep(200);
@@ -289,25 +289,25 @@ int MenuManager::MenuLaunch(void)
                 }
                 check_left();
                 check_right();
-                menu.draw_perso();
+                menu2d.draw_perso();
                 thd_sleep(110);
                 if (check_a())
                 {
                     if (passe == 0)
                     {
-                        if (menu.Getposcadre() == 0)
+                        if (menu2d.Getposcadre() == 0)
                         {
                             wav son_carlos("/rd/carlos.wav");
                             son_carlos.play();
                             son_carlos.stop();
                         }
-                        if (menu.Getposcadre() == 1)
+                        if (menu2d.Getposcadre() == 1)
                         {
                             wav son_momo("/rd/momo.wav");
                             son_momo.play();
                             son_momo.stop();
                         }
-                        if (menu.Getposcadre() == 2)
+                        if (menu2d.Getposcadre() == 2)
                         {
                             wav son_noel("/rd/noel.wav");
                             son_noel.play();
@@ -330,30 +330,30 @@ int MenuManager::MenuLaunch(void)
                         {
                             done3 = done2 = done = 1;
                         }
-                        menu.draw_perso_choisi();
+                        menu2d.draw_perso_choisi();
                     }
                 }
             }
         }
-        if (check_a() && menu.Getpos() == 1)
+        if (check_a() && menu2d.Getpos() == 1)
         {
             SelectionMenuSuivant.play();
-            menu.draw_record();
+            menu2d.draw_record();
             SelectionMenuPrecedent.play();
         }
-        if (check_a() && menu.Getpos() == 2)
+        if (check_a() && menu2d.Getpos() == 2)
         {
             SelectionMenuSuivant.play();
             DreamStyle.stop();
             genEric.play(1);
             for (int ind = 0; ind < 5; ind++)
             {
-                menu.draw_genEric(ind);
-                menu.draw_gen_font(ind);
+                menu2d.draw_genEric(ind);
+                menu2d.draw_gen_font(ind);
             }
-            menu.draw_gen_font(5);
-            menu.draw_gen_font(6);
-            menu.Resetall();
+            menu2d.draw_gen_font(5);
+            menu2d.draw_gen_font(6);
+            menu2d.Resetall();
             genEric.stop();
             SelectionMenuPrecedent.play();
             DreamStyle.play(1);
@@ -364,6 +364,6 @@ int MenuManager::MenuLaunch(void)
     done = 0;
     DreamStyle.stop();
 
-    menu.draw_game();
-    return menu.Getposcadre();
+    menu2d.draw_game();
+    return menu2d.Getposcadre();
 }

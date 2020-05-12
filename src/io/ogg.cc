@@ -27,7 +27,7 @@ extern "C"
 
 #include "ogg.h"
 
-ogg::ogg(char *s)
+ogg::ogg(const char *s)
     : song(s)
 {
 }

@@ -43,8 +43,8 @@ public:
     void draw_record();
     void draw_pause();
     void draw_perso_choisi();
-    void draw_genEric();
-    void draw_gen_font();
+    void draw_genEric(int);
+    void draw_gen_font(int);
 
     /*Gestion Ecran VMU*/
 
@@ -72,7 +72,7 @@ public:
 
 private:
     void draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, int taille, pvr_ptr_t texture, float alpha);
-    void drawFont(char *lemot, int taille, int posx, int posy, float r, float g, float b);
+    void drawFont(const char *word, int size, int posx, int posy, float r, float g, float b);
     void draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2);
     void draw_tr_intro(float alpha);
 
