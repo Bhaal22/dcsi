@@ -19,8 +19,8 @@ OBJS = romdisk.o  Element.o \
 #video.o
 #KOS_CFLAGS +=	-DDREAMCAST -I/net/home/m/muller/bin/STLport-4.6/stlport  -I/net/home/m/muller/kos/addons/libjpeg
 
-KOS_CFLAGS += -I. -I../lib/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
-KOS_LDFLAGS += -L../lib/coldet -L../../Libvfdc/lib/
+KOS_CFLAGS += -I. -I../libs/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
+KOS_LDFLAGS += -L../libs/coldet -L../../Libvfdc/lib/
 
 #-I/home/john/formation/Dreamcast/STL/STLport-4.6/stlport -DDREAMCAST 
 
