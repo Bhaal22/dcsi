@@ -58,17 +58,13 @@ bool DCSI::Init(int perso)
 
     maple_device_t *cont;
     cont_state_t *state;
-    GLboolean xp = GL_FALSE;
-    GLboolean yp = GL_FALSE;
     Vehicle *vehicle;
 
     int i;
     int f = NEG;
-    float d = 0.0;
     int ft = f;
     int throttle = 0;
     int brake = 0;
-    int ang = 0;
 
     ogg sultan("/rd/sons/ogg/sultanTribes.ogg");
 

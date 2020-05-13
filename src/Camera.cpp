@@ -18,9 +18,6 @@ void Camera::affiche()
 
 void Camera::move(const Vector3D &newView, const Vector3D &charDirection)
 {
-    //we stock the current position, in order to move back to it in case of collision :
-    Vector3D pos_orig = position;
-
     //we first get the speed the character moved :
     float speed;
     Vector3D tmp = newView - view;
@@ -79,7 +76,6 @@ void Camera::updateRotation(const Vector3D &newView, const Vector3D &charDirecti
 
     bool rotating_tmp = rotating;
 
-    bool left;
     Vector3D tmp2 = CrossProduct(moveVec, charDirection);
     if (tmp2.y < 0)
         angle *= -1;
@@ -99,14 +95,8 @@ void Camera::updateRotation(const Vector3D &newView, const Vector3D &charDirecti
 
     /* If the rotation has made the camera to collide, we return back to our original position : */
 
-    /*    if (hasCollided(newView, listOtherObjects, moveVec)) */
-    /* We get back to our original position because we have collided */
-    /*      position = pos_orig;
-    else
-    {
-      /* We didn't collide : */
+    /* We didn't collide : */
     rotating = rotating_tmp;
-    //      pos_orig = position;
 }
 
 //determine if the camera collided, if so update moveVec

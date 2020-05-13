@@ -76,9 +76,7 @@ void Landscape::loadJpeg(const char *filename)
 
 float Landscape::getHautPoint(float x, float z)
 {
-
     int i, j;
-    float ext = dimension / 2;
 
     i = (2 * x + dimension) / (2 * pas);
     j = (2 * z + dimension) / (2 * pas);

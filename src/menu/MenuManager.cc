@@ -14,13 +14,11 @@ int MenuManager::check_left()
     /*if (cont_get_cond(c, &cond) < 0)
     return 0;*/
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_DPAD_LEFT)) {
     if (!(state->buttons & CONT_DPAD_LEFT))
@@ -49,13 +47,11 @@ int MenuManager::check_right()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_DPAD_RIGHT)) {
     if (!(state->buttons & CONT_DPAD_RIGHT))
@@ -80,13 +76,11 @@ int MenuManager::check_down()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_DPAD_DOWN)) {
     if (!(state->buttons & CONT_DPAD_DOWN))
@@ -126,13 +120,11 @@ int MenuManager::check_up()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_DPAD_UP)) {
     if (!(state->buttons & CONT_DPAD_UP))
@@ -171,13 +163,11 @@ int MenuManager::check_a()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_A)) {
     if (!(state->buttons & CONT_A))
@@ -200,13 +190,11 @@ int MenuManager::check_b()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_B)) {
     if (!(state->buttons & CONT_B))
@@ -229,13 +217,11 @@ int MenuManager::check_y()
 
     cont = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
 
-    if (cont)
-    {
-        state = (cont_state_t *)maple_dev_status(cont);
-
-        if (!state)
-            return 0;
-    }
+    if (!cont) return 0;
+    
+    state = (cont_state_t *)maple_dev_status(cont);
+    if (!state) 
+        return 0;
 
     //if (!(cond.buttons & CONT_Y)) {
     if (!(state->buttons & CONT_Y))

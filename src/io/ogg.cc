@@ -49,12 +49,12 @@ char *ogg::getArtist()
 
 char *ogg::getTitle()
 {
-    sndoggvorbis_gettitle();
+    return sndoggvorbis_gettitle();
 }
 
 char *ogg::getGenre()
 {
-    sndoggvorbis_getgenre();
+    return sndoggvorbis_getgenre();
 }
 
 void ogg::setVolume(int vol)

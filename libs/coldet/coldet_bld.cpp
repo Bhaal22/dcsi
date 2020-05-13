@@ -51,11 +51,18 @@ void CollisionModel3DImpl::addTriangle(const Vector3D& v1, const Vector3D& v2, c
 
 void CollisionModel3DImpl::addQuad(const Vector3D& v1, const Vector3D& v2, const Vector3D& v3, const Vector3D& v4, Vector3D* arrayVecT1, Vector3D* arrayVecT2)
 {
-  if (arrayVecT1 != NULL)
-    arrayVecT1[0] = v1; arrayVecT1[1] = v2; arrayVecT1[2] = v3; 
+  if (arrayVecT1 != nullptr)
+  {
+    arrayVecT1[0] = v1;
+    arrayVecT1[1] = v2;
+    arrayVecT1[2] = v3;
+  }
   addTriangle (v1, v2, v3);
-  if (arrayVecT2 != NULL)
-    arrayVecT2[0] = v1; arrayVecT2[1] = v3; arrayVecT2[2] = v4; 
+  if (arrayVecT2 != nullptr) {
+    arrayVecT2[0] = v1;
+    arrayVecT2[1] = v3;
+    arrayVecT2[2] = v4; 
+  }
   addTriangle (v1, v3, v4);
 }
 

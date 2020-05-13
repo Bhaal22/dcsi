@@ -1,9 +1,11 @@
+.PHONY: all
+
 PROJECT=coldet
 LIB=libcoldet.a
 LIBPATH=.
 CC=g++
 OPT=-O2
-CFLAGS=-c $(OPT) -DGCC
+CFLAGS=-c $(OPT) -DGCC -Wno-unused-function
 
 OBJS= \
 coldet.o \
@@ -16,8 +18,6 @@ sysdep.o \
 mytritri.o
 
 all: $(LIB)
-
-KOS_CFLAGS += -I/home/john/formation/Dreamcast/STL/STLport-4.6/stlport -O2
 
 $(LIB): $(OBJS)
 	rm -f $(LIB)

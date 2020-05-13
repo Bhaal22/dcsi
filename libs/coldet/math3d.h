@@ -21,8 +21,8 @@
  *
  * Or visit the home page: http://photoneffect.com/coldet/
  */
-#ifndef H_MATH3D
-#define H_MATH3D
+
+#pragma once
 
 #include <math.h>
 #include <kos.h>
@@ -530,4 +530,3 @@ static float radToDeg (float rad) {
 #undef _43
 #undef _44
 
-#endif // H_MATH3D

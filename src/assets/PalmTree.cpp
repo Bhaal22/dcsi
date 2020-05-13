@@ -1,6 +1,6 @@
 #include "PalmTree.h"
 
-PalmTree::PalmTree(char *fn, GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l) : GraphicalElement(x, y, z), width(w), height(h), length(l)
+PalmTree::PalmTree(const char *fn, GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l) : GraphicalElement(x, y, z), width(w), height(h), length(l)
 {
     createTexturePNG(fn, PNG_FULL_ALPHA);
     r = g = b = 1.0f;

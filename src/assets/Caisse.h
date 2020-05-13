@@ -5,7 +5,7 @@
 class Caisse : public GraphicalElement
 {
 public:
-    Caisse(char *, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+    Caisse(const char *, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
 
     ~Caisse();
 

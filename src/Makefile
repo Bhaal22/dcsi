@@ -1,3 +1,5 @@
+.PHONE: all
+
 TARGET = dcsi.elf
 OBJS = romdisk.o  Element.o \
 	assets/PalmTree.o  \
@@ -17,28 +19,21 @@ OBJS = romdisk.o  Element.o \
 	game.o \
 	menu/MenuManager.o \
 #video.o
-#KOS_CFLAGS +=	-DDREAMCAST -I/net/home/m/muller/bin/STLport-4.6/stlport  -I/net/home/m/muller/kos/addons/libjpeg
 
-KOS_CFLAGS += -I. -I../libs/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/
+KOS_CFLAGS += -I. -I../libs/coldet -DDREAMCAST -I$(KOS_BASE)/../kos-ports/ -I../../Libvfdc/include/ -Wno-unused-function
 KOS_LDFLAGS += -L../libs/coldet -L../../Libvfdc/lib/
 
-#-I/home/john/formation/Dreamcast/STL/STLport-4.6/stlport -DDREAMCAST 
-
-all: rm-elf $(TARGET)
+all: clean rm-elf $(TARGET)
 
 include ${KOS_BASE}/Makefile.rules
 
 rm-elf:
-	-rm -f $(TARGET)
-	-rm -f romdisk.o romdisk.img
+	rm -f $(TARGET)
+	rm -f romdisk.o romdisk.img
 
 clean: rm-elf
-	-rm -f $(OBJS)
+	rm -f $(OBJS)
 	rm *~ -f
-
-#$(TARGET): $(OBJS)
-#	$(KOS_CC)  $(KOS_CFLAGS) $(KOS_LDFLAGS) -o $(TARGET) $(KOS_START) \
-#		$(OBJS) $(DATAOBJS) $(OBJEXTRA) -L$(KOS_BASE) -lkglx -lk++ -lpng -lpcx -ljpeg -lz -lm $(KOS_LIBS)
 
 #-lk++
 #-lmpg
