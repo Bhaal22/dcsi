@@ -6,10 +6,7 @@ NoelVehicle::NoelVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfloa
     createTexturePNG("/rd/vehicles/noel/dessus.png", PNG_FULL_ALPHA);
 }
 
-NoelVehicle::~NoelVehicle()
-{
-    delete box;
-}
+NoelVehicle::~NoelVehicle() {}
 
 void NoelVehicle::shape()
 {

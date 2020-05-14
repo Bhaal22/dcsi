@@ -7,10 +7,7 @@ OisisVehicle::OisisVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfl
     createTexturePNG("/rd/vehicles/oisis/orange.png", PNG_FULL_ALPHA);
 }
 
-OisisVehicle::~OisisVehicle()
-{
-    delete box;
-}
+OisisVehicle::~OisisVehicle() {}
 
 void OisisVehicle::shape()
 {

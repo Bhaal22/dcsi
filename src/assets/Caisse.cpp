@@ -5,10 +5,7 @@ Caisse::Caisse(const char *fn, GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLflo
     createTexturePNG(fn, PNG_FULL_ALPHA);
 }
 
-Caisse::~Caisse()
-{
-    delete box;
-}
+Caisse::~Caisse() {}
 
 void Caisse::shape()
 {

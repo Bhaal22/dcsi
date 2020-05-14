@@ -9,10 +9,7 @@ SkyBox::SkyBox(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfloat l)
     createTexturePCX("/rd/skybox/left.pcx");
 }
 
-SkyBox::~SkyBox()
-{
-    delete box;
-}
+SkyBox::~SkyBox() {}
 
 void SkyBox::quad(int noFace)
 {

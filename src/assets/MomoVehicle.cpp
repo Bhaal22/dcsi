@@ -6,10 +6,7 @@ MomoVehicle::MomoVehicle(GLfloat x, GLfloat y, GLfloat z, GLfloat xFront, GLfloa
     createTexturePNG("/rd/vehicles/momo/bois.png", PNG_FULL_ALPHA);
 }
 
-MomoVehicle::~MomoVehicle()
-{
-    delete box;
-}
+MomoVehicle::~MomoVehicle() {}
 
 void MomoVehicle::shape()
 {

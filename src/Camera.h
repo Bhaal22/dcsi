@@ -32,27 +32,15 @@ public:
 
     Camera(Vector3D &cView) : Element(Vector3D(0, HEIGHT, 0)), view(cView), up(Vector3D(0, 1, 0)) {}
 
-    void display();
+    void render();
 
-    const Vector3D &getPosition()
-    {
-        return position;
-    }
+    const Vector3D &getPosition() { return position; }
 
-    const Vector3D &getView()
-    {
-        return view;
-    }
+    const Vector3D &getView() { return view; }
 
-    const Vector3D &getUpVector()
-    {
-        return up;
-    }
+    const Vector3D &getUpVector() { return up; }
 
-    void setRotating(bool newR)
-    {
-        rotating = newR;
-    }
+    void setRotating(bool newR) { rotating = newR; }
 
     // This changes the position, view, and up vector of the camera.
     void changePosition(float positionX, float positionY, float positionZ,

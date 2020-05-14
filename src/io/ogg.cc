@@ -44,7 +44,7 @@ void ogg::play(int loop)
 
 char *ogg::getArtist()
 {
-    sndoggvorbis_getartist();
+    return sndoggvorbis_getartist();
 }
 
 char *ogg::getTitle()

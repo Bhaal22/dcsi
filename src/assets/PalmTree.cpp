@@ -6,10 +6,7 @@ PalmTree::PalmTree(const char *fn, GLfloat x, GLfloat y, GLfloat z, GLfloat w, G
     r = g = b = 1.0f;
 }
 
-PalmTree::~PalmTree()
-{
-    delete box;
-}
+PalmTree::~PalmTree() {}
 
 void PalmTree::shape()
 {

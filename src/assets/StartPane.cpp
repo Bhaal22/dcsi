@@ -7,10 +7,7 @@ StartPane::StartPane(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat h, GLfl
     createTexturePNG("/rd/start.png", PNG_FULL_ALPHA);
 }
 
-StartPane::~StartPane()
-{
-    delete box;
-}
+StartPane::~StartPane() {}
 
 void StartPane::shape()
 {

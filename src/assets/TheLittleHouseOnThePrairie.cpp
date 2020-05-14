@@ -8,10 +8,7 @@ TheLittleHouseOnThePrairie::TheLittleHouseOnThePrairie(GLfloat x, GLfloat y, GLf
     createTexturePCX("/rd/bois24.pcx");
 }
 
-TheLittleHouseOnThePrairie::~TheLittleHouseOnThePrairie()
-{
-    delete box;
-}
+TheLittleHouseOnThePrairie::~TheLittleHouseOnThePrairie() {}
 
 void TheLittleHouseOnThePrairie::shape()
 {

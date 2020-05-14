@@ -250,7 +250,7 @@ bool DCSI::Init(int perso)
 
         glLoadIdentity();
         glPushMatrix();
-        cam.affiche();
+        cam.render();
         glEnable(GL_KOS_NEARZ_CLIPPING);
         glPushMatrix();
         glScalef(350.0f, 200.0f, 350.0f);

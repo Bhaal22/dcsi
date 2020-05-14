@@ -1,19 +1,17 @@
 #pragma once
 
+#include <vector>
+
 #include "Element.h"
 #include "Main.h"
 #include <math3d.h>
-#include <vector>
-//#include "Texture.h"
 
 class GraphicalElement : public Element
 {
 public:
-    /* Constructor */
     GraphicalElement(float, float, float);
     GraphicalElement(){};
 
-    /*  Destructor */
     virtual ~GraphicalElement() {}
 
     /* Virtual Method for painting the Element */

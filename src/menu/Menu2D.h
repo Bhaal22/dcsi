@@ -28,11 +28,9 @@ class Menu2D
 {
 
 public:
-    /*Constructeur et destructeur*/
     Menu2D();
     ~Menu2D();
 
-    /*Methodes graphiques*/
     /*Affiche le nom de la team*/
     void draw_intro();
     void draw_perso();
@@ -63,7 +61,6 @@ public:
     void Setposcadrex(float newval) { poscadrex = newval; }
     void Setpospause(int val) { pospause = val; }
 
-    /*Accesseurs*/
     int Getpos() { return pos; }
     int Getposcadre() { return poscadre; }
     float Getposy() { return posy; }
@@ -76,7 +73,6 @@ private:
     void draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2);
     void draw_tr_intro(float alpha);
 
-    /*Attributs*/
     Perso *pers_carlos, *pers_momo, *pers_noel;
     fntRenderer *font_renderer;
     pvr_ptr_t *textures;

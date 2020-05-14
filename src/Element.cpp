@@ -2,12 +2,12 @@
 
 Element::~Element()
 {
-    delete box;
+    delete bounding_box;
 }
 
 inline const BoundingBox *Element::getBoundingBox()
 {
-    return box;
+    return bounding_box;
 }
 
 Vector3D &Element::getPosition()
