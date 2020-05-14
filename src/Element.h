@@ -7,19 +7,29 @@
 class Element
 {
 public:
-    Element() : position(Vector3D(0, 0, 0)){};
-    Element(Vector3D pos) : position(pos){};
-    Element(float x, float y, float z) : position(Vector3D(x, y, z)){};
-    /* destructor */
+    Element():
+		position(Vector3D(0, 0, 0)),
+		bounding_box(nullptr)
+	{};
+
+    Element(const Vector3D &pos):
+		position(pos),
+		bounding_box(nullptr)
+	{};
+
+    Element(float x, float y, float z):
+		position(Vector3D(x, y, z)),
+		bounding_box(nullptr)
+	{};
+
     virtual ~Element();
 
-    /* get the Bounding Box */
     const BoundingBox *getBoundingBox();
     Vector3D &getPosition();
 
 protected:
-    BoundingBox *box;
     Vector3D position;
+	BoundingBox *bounding_box;
 };
 
 /* Element.h */

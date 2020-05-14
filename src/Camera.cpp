@@ -9,7 +9,7 @@
  * and a list of the other objects which could colide with the camera
  *  the transformation of the other objects must have been set !
  */
-void Camera::affiche()
+void Camera::display()
 {
     gluLookAt(position.x, position.y, position.z,
               view.x, view.y, view.z,

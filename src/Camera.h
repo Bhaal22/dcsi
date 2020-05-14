@@ -18,28 +18,33 @@ class Camera : public Element
 {
 
 public:
-    Camera(Vector3D &cPos, Vector3D &cView, Vector3D &cUp) : Element(cPos), view(cView), up(cUp), rotating(false) {}
+    Camera(Vector3D &cPos, Vector3D &cView, Vector3D &cUp):
+        Element(cPos), view(cView), up(cUp), rotating(false)
+    {}
 
     Camera(float positionX, float positionY, float positionZ,
            float viewX, float viewY, float viewZ,
-           float upX, float upY, float upZ) : Element(Vector3D(positionX, positionY, positionZ)), view(Vector3D(viewX, viewY, viewZ)),
-                                              up(Vector3D(upX, upY, upZ)) {}
+           float upX, float upY, float upZ):
+        Element(Vector3D(positionX, positionY, positionZ)),
+        view(Vector3D(viewX, viewY, viewZ)),
+        up(Vector3D(upX, upY, upZ))
+    {}
 
     Camera(Vector3D &cView) : Element(Vector3D(0, HEIGHT, 0)), view(cView), up(Vector3D(0, 1, 0)) {}
 
-    void affiche();
+    void display();
 
-    Vector3D &getPosition()
+    const Vector3D &getPosition()
     {
         return position;
     }
 
-    Vector3D &getView()
+    const Vector3D &getView()
     {
         return view;
     }
 
-    Vector3D &getUpVector()
+    const Vector3D &getUpVector()
     {
         return up;
     }
