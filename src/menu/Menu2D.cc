@@ -8,39 +8,39 @@ pvr_init_params_t params = {
     512 * 512
 };
 
-Menu2D ::Menu2D(void)
+Menu2D::Menu2D(void)
 {
     //pvr_init(&params);
     pvr_init_defaults();
-    textures = new pvr_ptr_t[12];
+    textures = new pvr_ptr_t[11];
     pers_carlos = new Perso("carlos", 45, "Oisis Island", "Oisis Bottle");
     pers_momo = new Perso("momo", 20, "Massillia", "Skate of McFly");
     pers_noel = new Perso("noel", 500, "North pole", "Magic gift");
 
     textures[0] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/menubase.png", textures[0], PNG_FULL_ALPHA);
+    png_to_texture("/rd/menubase.png", textures[0], PNG_FULL_ALPHA);
     textures[1] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/team.png", textures[1], PNG_FULL_ALPHA);
+    png_to_texture("/rd/team.png", textures[1], PNG_FULL_ALPHA);
     textures[2] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/carlos.png", textures[2], PNG_FULL_ALPHA);
+    png_to_texture("/rd/carlos.png", textures[2], PNG_FULL_ALPHA);
     textures[3] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/momo.png", textures[3], PNG_FULL_ALPHA);
+    png_to_texture("/rd/momo.png", textures[3], PNG_FULL_ALPHA);
     textures[4] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/noel.png", textures[4], PNG_FULL_ALPHA);
+    png_to_texture("/rd/noel.png", textures[4], PNG_FULL_ALPHA);
     textures[5] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/cadreselect.png", textures[5], PNG_FULL_ALPHA);
+    png_to_texture("/rd/cadreselect.png", textures[5], PNG_FULL_ALPHA);
     textures[6] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/1.png", textures[6], PNG_FULL_ALPHA);
+    png_to_texture("/rd/1.png", textures[6], PNG_FULL_ALPHA);
     textures[7] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/2.png", textures[7], PNG_FULL_ALPHA);
+    png_to_texture("/rd/2.png", textures[7], PNG_FULL_ALPHA);
     textures[8] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/3.png", textures[8], PNG_FULL_ALPHA);
+    png_to_texture("/rd/3.png", textures[8], PNG_FULL_ALPHA);
     textures[9] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/Go.png", textures[9], PNG_FULL_ALPHA);
-    textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
-    png_to_texture("/rd/menupics/fondgris.png", textures[10], PNG_FULL_ALPHA);
-    textures[11] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/fondcolor.png", textures[11], PNG_FULL_ALPHA);
+    png_to_texture("/rd/Go.png", textures[9], PNG_FULL_ALPHA);
+    //textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
+    //png_to_texture("/rd/fondgris.png", textures[10], PNG_FULL_ALPHA);
+    textures[10] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/fondcolor.png", textures[10], PNG_FULL_ALPHA);
 
     font_renderer = new fntRenderer();
     text_fonts = new fntTexFont("/rd/sorority.txf");
@@ -50,7 +50,7 @@ Menu2D ::Menu2D(void)
     poscadre = 0;
     poscadrex = 0.0;
 
-    filter_mode = 0;
+    filter_mode = 0;    
 }
 
 /*D�claration du destructeur*/
@@ -66,7 +66,6 @@ void Menu2D::Resetfont(void)
     filter_mode = 0;
 }
 
-/* Remet � zero tous les attibuts de menu*/
 void Menu2D::Resetall()
 {
     textures[0] = pvr_mem_malloc(512 * 512 * 2);
@@ -101,7 +100,6 @@ void Menu2D::Resetall()
     filter_mode = 0;
 }
 
-/* Methode pour faire appariatre le titre en transparence*/
 void Menu2D::draw_tr_intro(float alpha)
 {
     pvr_poly_cxt_t cxt;
@@ -146,7 +144,6 @@ void Menu2D::draw_tr_intro(float alpha)
     pvr_prim(&vert, sizeof(vert));
 }
 
-/* Dessine une box textur��e avec de l'alpha */
 void Menu2D::draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, int taille, pvr_ptr_t texture, float alpha)
 {
     pvr_poly_cxt_t cxt;
@@ -299,6 +296,9 @@ void Menu2D::draw_intro()
     int i, done = 0;
     int cpt = 0;
 
+    snd_stream_init();
+    sndoggvorbis_init();
+
     ogg introduction("/rd/IntroductionShort.ogg");
     wav DcsiPresents("/rd/DcsiPresents.wav");
     wav Pause("/rd/Pause.wav");
@@ -319,8 +319,10 @@ void Menu2D::draw_intro()
         pvr_list_finish();
         pvr_scene_finish();
         alpha += 0.01;
-        thd_sleep(50);
+        thd_sleep(150);
     }
+    introduction.stop();
+
     DcsiPresents.play();
     thd_sleep(2000);
     vmu_lcd_update(1);
@@ -345,7 +347,7 @@ void Menu2D::draw_intro()
     Pause.play();
     thd_sleep(200);
     vmu_lcd_update(0);
-    introduction.stop();
+//    introduction.stop();
     DcsiPresents.stop();
     Pause.stop();
 }

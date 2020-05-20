@@ -1,4 +1,6 @@
+dcsi.elf
 *.img
+dcsi.bin
 
 # Compiled Object files
 *.slo

@@ -38,8 +38,8 @@ float ry = 0.0f;
 
 #define ROT_ANGLE 0.1
 
-extern uint8 romdisk[];
-KOS_INIT_ROMDISK(romdisk);
+//extern uint8 romdisk[];
+//KOS_INIT_ROMDISK(romdisk);
 
 void CameraIntro(const Vector3D &camPos, float rotRatio, Camera *cam, Vehicle *vehi)
 {

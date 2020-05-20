@@ -21,7 +21,7 @@
 #define three 8
 #define go 9
 #define fondgris 10
-#define fondcolor 11
+#define fondcolor 10
 #define pause 12
 
 class Menu2D

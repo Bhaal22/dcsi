@@ -25,6 +25,7 @@ extern "C"
 }
 #endif
 
+#include <kos.h>
 #include "ogg.h"
 
 ogg::ogg(const char *s)
@@ -34,7 +35,6 @@ ogg::ogg(const char *s)
 
 void ogg::init()
 {
-    sndoggvorbis_init();
 }
 
 void ogg::play(int loop)
