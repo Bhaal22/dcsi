@@ -567,31 +567,31 @@ void Menu2D::draw_perso_choisi(void)
     drawFont("Vehicule:", 25, 150, 346, 0.0, 0.0, 0.0);
     if (poscadre == 0)
     {
-        sprintf(temp, "%d", pers_carlos->GetAge());
+        sprintf(temp, "%d", pers_carlos->age());
         draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[carlos], 1.0);
-        drawFont(pers_carlos->GetName(), 25, 320, 256, 0.0, 0.0, 0.0);
+        drawFont(pers_carlos->name(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_carlos->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_carlos->GetVehicule(), 25, 320, 346, 0.0, 0.0, 0.0);
+        drawFont(pers_carlos->country(), 25, 320, 316, 0.0, 0.0, 0.0);
+        drawFont(pers_carlos->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
     }
     if (poscadre == 1)
     {
-        sprintf(temp, "%d", pers_momo->GetAge());
+        sprintf(temp, "%d", pers_momo->age());
         draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[momo], 1.0);
-        drawFont(pers_momo->GetName(), 25, 320, 256, 0.0, 0.0, 0.0);
+        drawFont(pers_momo->name(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_momo->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_momo->GetVehicule(), 25, 320, 346, 0.0, 0.0, 0.0);
+        drawFont(pers_momo->country(), 25, 320, 316, 0.0, 0.0, 0.0);
+        drawFont(pers_momo->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
     }
     if (poscadre == 2)
     {
 
-        sprintf(temp, "%d", pers_noel->GetAge());
+        sprintf(temp, "%d", pers_noel->age());
         draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[noel], 1.0);
-        drawFont(pers_noel->GetName(), 25, 320, 256, 0.0, 0.0, 0.0);
+        drawFont(pers_noel->name(), 25, 320, 256, 0.0, 0.0, 0.0);
         drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_noel->GetPays(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_noel->GetVehicule(), 25, 320, 346, 0.0, 0.0, 0.0);
+        drawFont(pers_noel->country(), 25, 320, 316, 0.0, 0.0, 0.0);
+        drawFont(pers_noel->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
     }
     pvr_list_finish();
     pvr_scene_finish();

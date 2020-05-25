@@ -7,20 +7,23 @@ public:
         int age, 
         const char *country, 
         const char *vehicle) : 
-        name(name), 
-        age(age), 
-        country(country), vehicule(vehicle){};
+        name_(name), 
+        age_(age), 
+        country_(country), 
+        vehicle_(vehicle)
+    {};
+
     ~Perso(){};
 
-    const char *GetName() { return name; }
-    int GetAge() { return age; }
-    const char *GetPays() { return country; }
-    const char *GetVehicule() { return vehicule; }
+    const char *name() { return this->name_; }
+    int age() { return this->age_; }
+    const char *country() { return this->country_; }
+    const char *vehicle() { return this->vehicle_; }
 
 private:
-    const char *name;
-    int age;
-    const char *country;
-    const char *vehicule;
+    const char *name_;
+    int age_;
+    const char *country_;
+    const char *vehicle_;
 };
 
