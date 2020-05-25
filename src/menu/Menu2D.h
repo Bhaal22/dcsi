@@ -1,10 +1,15 @@
 #pragma once
 
+#include <vector>
+
 #include <kos.h>
 #include <png/png.h>
 #include <zlib/zlib.h>
-#include <dcplib/fnt.h>
 #include "alllcdtex.h"
+
+#include "FontRenderer.h"
+#include "MenuItem.h"
+
 #include "io/ogg.h"
 #include "io/wav.h"
 #include "perso.h"
@@ -28,7 +33,7 @@ class Menu2D
 {
 
 public:
-    Menu2D();
+    Menu2D(const FontRenderer &);
     ~Menu2D();
 
     /*Affiche le nom de la team*/
@@ -67,16 +72,16 @@ public:
     float Getposcadrex() { return poscadrex; }
     int Getpospause() { return pospause; }
 
+    static void draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, int taille, pvr_ptr_t texture, float alpha);
+    static void draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2);
+
 private:
-    void draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, int taille, pvr_ptr_t texture, float alpha);
-    void drawFont(const char *word, int size, int posx, int posy, float r, float g, float b);
-    void draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2);
     void draw_tr_intro(float alpha);
 
-    Perso *pers_carlos, *pers_momo, *pers_noel;
-    fntRenderer *font_renderer;
+    std::vector<const MenuItem *> menu_items_;
     pvr_ptr_t *textures;
-    fntTexFont *text_fonts;
+    const FontRenderer &font_renderer_;
+
     int pos;
     int pospause;
     float posy;

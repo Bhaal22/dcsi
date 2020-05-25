@@ -1,5 +1,10 @@
 #include "MenuManager.h"
 
+MenuManager::MenuManager()
+    : menu2d(FontRenderer("/rd/sorority.txf"))
+{
+}
+
 int MenuManager::check_left()
 {
     //uint8 c;

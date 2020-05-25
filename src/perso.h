@@ -15,10 +15,10 @@ public:
 
     ~Perso(){};
 
-    const char *name() { return this->name_; }
-    int age() { return this->age_; }
-    const char *country() { return this->country_; }
-    const char *vehicle() { return this->vehicle_; }
+    const char *name() const { return this->name_; }
+    int age() const { return this->age_; }
+    const char *country() const { return this->country_; }
+    const char *vehicle() const { return this->vehicle_; }
 
 private:
     const char *name_;

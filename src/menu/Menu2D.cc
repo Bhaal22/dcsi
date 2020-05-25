@@ -1,4 +1,5 @@
 #include "Menu2D.h"
+#include "MenuItem.h"
 
 pvr_init_params_t params = {
     /* Enable opaque and translucent polygons with size 16 */
@@ -8,42 +9,41 @@ pvr_init_params_t params = {
     512 * 512
 };
 
-Menu2D ::Menu2D(void)
+Menu2D ::Menu2D(const FontRenderer& font_renderer)
+    : font_renderer_(font_renderer)
 {
     //pvr_init(&params);
     pvr_init_defaults();
-    textures = new pvr_ptr_t[12];
-    pers_carlos = new Perso("carlos", 45, "Oisis Island", "Oisis Bottle");
-    pers_momo = new Perso("momo", 20, "Massillia", "Skate of McFly");
-    pers_noel = new Perso("noel", 500, "North pole", "Magic gift");
+    textures = new pvr_ptr_t[9];
+    auto pers_carlos = new Perso("carlos", 45, "Oisis Island", "Oisis Bottle");
+    auto pers_momo = new Perso("momo", 20, "Massillia", "Skate of McFly");
+    auto pers_noel = new Perso("noel", 500, "North pole", "Magic gift");
+
+    pvr_ptr_t menuItemBackground = pvr_mem_malloc(1024 * 1024 * 2);
+    png_to_texture("/rd/menupics/fondgris.png", menuItemBackground, PNG_FULL_ALPHA);
+
+    menu_items_.clear();
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_carlos, "/rd/menupics/carlos.png", menuItemBackground));
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_momo, "/rd/menupics/momo.png", menuItemBackground));
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_noel, "/rd/menupics/noel.png", menuItemBackground));
 
     textures[0] = pvr_mem_malloc(512 * 512 * 2);
     png_to_texture("/rd/menupics/menubase.png", textures[0], PNG_FULL_ALPHA);
     textures[1] = pvr_mem_malloc(512 * 512 * 2);
     png_to_texture("/rd/menupics/team.png", textures[1], PNG_FULL_ALPHA);
     textures[2] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/carlos.png", textures[2], PNG_FULL_ALPHA);
-    textures[3] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/momo.png", textures[3], PNG_FULL_ALPHA);
-    textures[4] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/noel.png", textures[4], PNG_FULL_ALPHA);
-    textures[5] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/cadreselect.png", textures[5], PNG_FULL_ALPHA);
-    textures[6] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/1.png", textures[6], PNG_FULL_ALPHA);
-    textures[7] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/2.png", textures[7], PNG_FULL_ALPHA);
-    textures[8] = pvr_mem_malloc(64 * 64 * 2);
-    png_to_texture("/rd/menupics/3.png", textures[8], PNG_FULL_ALPHA);
-    textures[9] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/Go.png", textures[9], PNG_FULL_ALPHA);
-    textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
-    png_to_texture("/rd/menupics/fondgris.png", textures[10], PNG_FULL_ALPHA);
-    textures[11] = pvr_mem_malloc(512 * 512 * 2);
-    png_to_texture("/rd/menupics/fondcolor.png", textures[11], PNG_FULL_ALPHA);
+    png_to_texture("/rd/menupics/cadreselect.png", textures[2], PNG_FULL_ALPHA);
+    textures[3] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/1.png", textures[3], PNG_FULL_ALPHA);
+    textures[4] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/2.png", textures[4], PNG_FULL_ALPHA);
+    textures[5] = pvr_mem_malloc(64 * 64 * 2);
+    png_to_texture("/rd/menupics/3.png", textures[5], PNG_FULL_ALPHA);
+    textures[6] = pvr_mem_malloc(256 * 256 * 2);
+    png_to_texture("/rd/menupics/Go.png", textures[6], PNG_FULL_ALPHA);
+    textures[7] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/fondcolor.png", textures[7], PNG_FULL_ALPHA);
 
-    font_renderer = new fntRenderer();
-    text_fonts = new fntTexFont("/rd/sorority.txf");
 
     pos = 0;
     posy = 85.0;
@@ -53,45 +53,49 @@ Menu2D ::Menu2D(void)
     filter_mode = 0;
 }
 
-/*D�claration du destructeur*/
-Menu2D::~Menu2D(void)
+Menu2D::~Menu2D()
 {
     delete[] textures;
 }
 
 void Menu2D::Resetfont(void)
 {
-    font_renderer = new fntRenderer();
-    text_fonts = new fntTexFont("/rd/sorority.txf");
     filter_mode = 0;
 }
 
-/* Remet � zero tous les attibuts de menu*/
 void Menu2D::Resetall()
 {
+    textures = new pvr_ptr_t[9];
+    auto pers_carlos = new Perso("carlos", 45, "Oisis Island", "Oisis Bottle");
+    auto pers_momo = new Perso("momo", 20, "Massillia", "Skate of McFly");
+    auto pers_noel = new Perso("noel", 500, "North pole", "Magic gift");
+
+    pvr_ptr_t menuItemBackground = pvr_mem_malloc(1024 * 1024 * 2);
+    png_to_texture("/rd/menupics/fondgris.png", menuItemBackground, PNG_FULL_ALPHA);
+
+    menu_items_.clear();
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_carlos, "/rd/menupics/carlos.png", menuItemBackground));
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_momo, "/rd/menupics/momo.png", menuItemBackground));
+    menu_items_.push_back(new MenuItem(font_renderer_, pers_noel, "/rd/menupics/noel.png", menuItemBackground));
+
     textures[0] = pvr_mem_malloc(512 * 512 * 2);
     png_to_texture("/rd/menupics/menubase.png", textures[0], PNG_FULL_ALPHA);
+    textures[1] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/team.png", textures[1], PNG_FULL_ALPHA);
     textures[2] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/carlos.png", textures[2], PNG_FULL_ALPHA);
-    textures[3] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/momo.png", textures[3], PNG_FULL_ALPHA);
-    textures[4] = pvr_mem_malloc(256 * 256 * 2);
-    png_to_texture("/rd/menupics/noel.png", textures[4], PNG_FULL_ALPHA);
-    textures[5] = pvr_mem_malloc(256 * 256 * 2);
     png_to_texture("/rd/menupics/cadreselect.png", textures[5], PNG_FULL_ALPHA);
-    textures[6] = pvr_mem_malloc(64 * 64 * 2);
+    textures[3] = pvr_mem_malloc(64 * 64 * 2);
     png_to_texture("/rd/menupics/1.png", textures[6], PNG_FULL_ALPHA);
-    textures[7] = pvr_mem_malloc(64 * 64 * 2);
+    textures[4] = pvr_mem_malloc(64 * 64 * 2);
     png_to_texture("/rd/menupics/2.png", textures[7], PNG_FULL_ALPHA);
-    textures[8] = pvr_mem_malloc(64 * 64 * 2);
+    textures[5] = pvr_mem_malloc(64 * 64 * 2);
     png_to_texture("/rd/menupics/3.png", textures[8], PNG_FULL_ALPHA);
-    textures[9] = pvr_mem_malloc(256 * 256 * 2);
+    textures[6] = pvr_mem_malloc(256 * 256 * 2);
     png_to_texture("/rd/menupics/Go.png", textures[9], PNG_FULL_ALPHA);
-    textures[10] = pvr_mem_malloc(1024 * 1024 * 2);
+    textures[7] = pvr_mem_malloc(1024 * 1024 * 2);
     png_to_texture("/rd/menupics/fondgris.png", textures[10], PNG_FULL_ALPHA);
-
-    font_renderer = new fntRenderer();
-    text_fonts = new fntTexFont("/rd/sorority.txf");
+    textures[8] = pvr_mem_malloc(512 * 512 * 2);
+    png_to_texture("/rd/menupics/fondcolor.png", textures[11], PNG_FULL_ALPHA);
 
     pos = 0;
     posy = 85.0;
@@ -146,7 +150,6 @@ void Menu2D::draw_tr_intro(float alpha)
     pvr_prim(&vert, sizeof(vert));
 }
 
-/* Dessine une box textur��e avec de l'alpha */
 void Menu2D::draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, int taille, pvr_ptr_t texture, float alpha)
 {
     pvr_poly_cxt_t cxt;
@@ -191,7 +194,7 @@ void Menu2D::draw_alp_tex_box(float x1, float y1, float x2, float y2, float z, i
     pvr_prim(&vert, sizeof(vert));
 }
 
-/* Affichage des menus */
+
 void Menu2D::draw_menu()
 {
     pvr_poly_cxt_t cxt;
@@ -236,22 +239,6 @@ void Menu2D::draw_menu()
     pvr_prim(&vert, sizeof(vert));
 }
 
-/*Affichage du texte*/
-void Menu2D::drawFont(const char *word, int size, int posx, int posy, float r, float g, float b)
-{
-    font_renderer->setFilterMode(filter_mode);
-
-    font_renderer->setFont(text_fonts);
-    font_renderer->setPointSize(size);
-
-    font_renderer->begin();
-    font_renderer->setColor(r, g, b);
-    font_renderer->start2f(posx, posy);
-    font_renderer->puts(word);
-    font_renderer->end();
-}
-
-/*display colored box*/
 void Menu2D::draw_poly_box(float x1, float y1, float x2, float y2, float z, float a1, float r1, float g1, float b1, float a2, float r2, float g2, float b2)
 {
     pvr_poly_cxt_t cxt;
@@ -336,7 +323,7 @@ void Menu2D::draw_intro()
         pvr_list_begin(PVR_LIST_TR_POLY);
         draw_alp_tex_box(0.0, 0.0, 640.0, 600.0, 0.1, 512, textures[fondcolor], 1.0);
         if (cpt < 75)
-            drawFont("Press Start !", 30, 180, 350, 0.4, 0.7, 0.93);
+            font_renderer_.WriteWord("Press Start !", filter_mode, 30, 180, 350, 0.4, 0.7, 0.93);
         pvr_list_finish();
         pvr_scene_finish();
         cpt = (cpt + 1) % 100;
@@ -406,67 +393,67 @@ void Menu2D::draw_gen_font(int choixtexte)
         draw_poly_box(0.0f, 0.0f, 640.0f, 480.0f, 0.1f, 0.9f, 0.0f, 0.0f, 0.0f, 0.9f, 0.0f, 0.0f, 0.0f);
         if (choixtexte == 0)
         {
-            drawFont("Hyun_Chul06", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("Physical Engine", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("Application Synchroniser", 18, 80, 205, 1.0, 1.0, 1.0);
-            drawFont("\"GPL is not dead\"", 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Hyun_Chul06", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Physical Engine", filter_mode,  18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Application Synchroniser", filter_mode,  18, 80, 205, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("\"GPL is not dead\"", filter_mode,  18, 80, 255, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 1)
         {
-            drawFont("HebusXIII", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("2D Engine(SDL,PVR)", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("VMU Managing", 18, 80, 205, 1.0, 1.0, 1.0);
-            drawFont("3D and textures design", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("Drawings", 18, 80, 280, 1.0, 1.0, 1.0);
-            drawFont("\"Charles Ingalls\"", 18, 80, 330, 1.0, 1.0, 1.0);
-            drawFont("The little house on prairie creator", 18, 80, 355, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("HebusXIII", filter_mode,  25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("2D Engine(SDL,PVR)", filter_mode,  18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("VMU Managing", filter_mode, 18, 80, 205, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("3D and textures design", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Drawings", filter_mode, 18, 80, 280, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("\"Charles Ingalls\"", filter_mode, 18, 80, 330, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("The little house on prairie creator", filter_mode, 18, 80, 355, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 2)
         {
-            drawFont("Imhotep", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("Collision system", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("Camera Engine", 18, 80, 205, 1.0, 1.0, 1.0);
-            drawFont("Voices", 18, 80, 230, 1.0, 1.0, 1.0);
-            drawFont("Specifications", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("\"Demain matin �� 15h... C est bon ?\"", 18, 80, 305, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Imhotep", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Collision system", filter_mode, 18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Camera Engine", filter_mode, 18, 80, 205, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Voices", filter_mode, 18, 80, 230, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Specifications", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("\"Demain matin �� 15h... C est bon ?\"", filter_mode, 18, 80, 305, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 3)
         {
-            drawFont("Bhaal22", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("3D and camera engine", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("System developement", 18, 80, 205, 1.0, 1.0, 1.0);
-            drawFont("Preliminaries studies", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("\"The gnou : an animal really?\"", 18, 80, 305, 1.0, 1.0, 1.0);
-            drawFont("Dormir? J essaie d arreter", 18, 80, 330, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Bhaal22", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("3D and camera engine", filter_mode, 18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("System developement", filter_mode, 18, 80, 205, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Preliminaries studies", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("\"The gnou : an animal really?\"", filter_mode, 18, 80, 305, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Dormir? J essaie d arreter", filter_mode, 18, 80, 330, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 4)
         {
-            drawFont("Sypher", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("Sound and video Engine", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("2D design and 3D object developement", 18, 80, 205, 1.0, 1.0, 1.0);
-            drawFont("Multimedia and communication", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("Musical and sonor compositor", 18, 80, 280, 1.0, 1.0, 1.0);
-            drawFont("\"Attention j upload\"", 18, 80, 330, 1.0, 1.0, 1.0);
-            drawFont("DJ Marcas aka \"le Raleur\"", 18, 80, 355, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Sypher", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Sound and video Engine", filter_mode, 18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("2D design and 3D object developement", filter_mode, 18, 80, 205, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Multimedia and communication", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Musical and sonor compositor", filter_mode, 18, 80, 280, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("\"Attention j upload\"", filter_mode, 18, 80, 330, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("DJ Marcas aka \"le Raleur\"", filter_mode, 18, 80, 355, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 5)
         {
-            drawFont("Special thanks", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("Ultimo", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("Wyvern", 18, 80, 230, 1.0, 1.0, 1.0);
-            drawFont("http://www.truemetal.org/wyvern/", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("Vicent R (Euclidian transformations)", 18, 80, 280, 1.0, 1.0, 1.0);
-            drawFont("Dan Potter for KOS lib", 18, 80, 330, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Special thanks", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Ultimo", filter_mode, 18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Wyvern", filter_mode, 18, 80, 230, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("http://www.truemetal.org/wyvern/", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Vicent R (Euclidian transformations)", filter_mode, 18, 80, 280, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Dan Potter for KOS lib", filter_mode, 18, 80, 330, 1.0, 1.0, 1.0);
         }
         else if (choixtexte == 6)
         {
-            drawFont("Thanks for playing", 25, 180, 100, 1.0, 1.0, 1.0);
-            drawFont("The DreamTeamCast :", 18, 80, 180, 1.0, 1.0, 1.0);
-            drawFont("BOLORE Eric", 18, 80, 230, 1.0, 1.0, 1.0);
-            drawFont("LEGRAND Guillaume", 18, 80, 255, 1.0, 1.0, 1.0);
-            drawFont("MARTIN Mickael", 18, 80, 280, 1.0, 1.0, 1.0);
-            drawFont("MULLER Jonathan", 18, 80, 305, 1.0, 1.0, 1.0);
-            drawFont("TRIOL Thomas", 18, 80, 330, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("Thanks for playing", filter_mode, 25, 180, 100, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("The DreamTeamCast :", filter_mode, 18, 80, 180, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("BOLORE Eric", filter_mode, 18, 80, 230, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("LEGRAND Guillaume", filter_mode, 18, 80, 255, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("MARTIN Mickael", filter_mode, 18, 80, 280, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("MULLER Jonathan", filter_mode, 18, 80, 305, 1.0, 1.0, 1.0);
+            font_renderer_.WriteWord("TRIOL Thomas", filter_mode, 18, 80, 330, 1.0, 1.0, 1.0);
         }
         pvr_list_finish();
         pvr_scene_finish();
@@ -492,11 +479,11 @@ void Menu2D::draw_perso()
     draw_alp_tex_box(384.0, 0.0, 640.0, 256.0, 1.0, 256, textures[noel], 1.0);
     draw_alp_tex_box(poscadrex, 0.0, poscadrex + 256.0, 256.0, 1.0, 256, textures[select], 1.0);
     if (poscadre == 0)
-        drawFont("Carlos", 25, 270, 320, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord("Carlos", filter_mode, 25, 270, 320, 0.0, 0.0, 0.0);
     else if (poscadre == 1)
-        drawFont("Momo", 25, 275, 320, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord("Momo", filter_mode, 25, 275, 320, 0.0, 0.0, 0.0);
     else if (poscadre == 2)
-        drawFont("Noel", 25, 275, 320, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord("Noel", filter_mode, 25, 275, 320, 0.0, 0.0, 0.0);
     pvr_list_finish();
     pvr_scene_finish();
 }
@@ -537,8 +524,8 @@ void Menu2D::draw_save_init()
             pvr_list_begin(PVR_LIST_TR_POLY);
             draw_poly_box(1.0f, 1.0f, 640.0f, 480.0f, 0.1f, 0.99f, 1.0f, 1.0f, 1.0f, 0.99f, 1.0f, 1.0f, 1.0f);
             draw_poly_box(10.0f, 10.0f, 630.0f, 470.0f, 0.0f, 0.3f, 0.6f, 0.55f, 0.9f, 0.3f, 0.6f, 0.55f, 0.9f);
-            drawFont("Press start to create a DCSI file", 25, 30, 200, 0.0, 0.0, 0.0);
-            drawFont("on your VMU", 25, 200, 240, 0.0, 0.0, 0.0);
+            font_renderer_.WriteWord("Press start to create a DCSI file", filter_mode, 25, 30, 200, 0.0, 0.0, 0.0);
+            font_renderer_.WriteWord("on your VMU", filter_mode, 25, 200, 240, 0.0, 0.0, 0.0);
             pvr_list_finish();
             pvr_scene_finish();
         }
@@ -546,58 +533,11 @@ void Menu2D::draw_save_init()
     }
 }
 
-/* Affichage des caract��ristiques des diff��rents persos*/
-void Menu2D::draw_perso_choisi(void)
+void Menu2D::draw_perso_choisi()
 {
-    char temp[10];
-
-    pvr_wait_ready();
-    pvr_scene_begin();
-
-    pvr_list_begin(PVR_LIST_OP_POLY);
-
-    pvr_list_finish();
-
-    pvr_list_begin(PVR_LIST_TR_POLY);
-    draw_alp_tex_box(0.0, 0.0, 1024.0, 1024.0, 0.1, 1024, textures[fondgris], 1.0);
-    draw_poly_box(30.0f, 30.0f, 610.0f, 450.0f, 0.1f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.8f, 0.8f, 0.8f);
-    drawFont("Name", 25, 150, 256, 0.0, 0.0, 0.0);
-    drawFont("Age:", 25, 150, 286, 0.0, 0.0, 0.0);
-    drawFont("Country:", 25, 150, 316, 0.0, 0.0, 0.0);
-    drawFont("Vehicule:", 25, 150, 346, 0.0, 0.0, 0.0);
-    if (poscadre == 0)
-    {
-        sprintf(temp, "%d", pers_carlos->age());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[carlos], 1.0);
-        drawFont(pers_carlos->name(), 25, 320, 256, 0.0, 0.0, 0.0);
-        drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_carlos->country(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_carlos->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
-    }
-    if (poscadre == 1)
-    {
-        sprintf(temp, "%d", pers_momo->age());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[momo], 1.0);
-        drawFont(pers_momo->name(), 25, 320, 256, 0.0, 0.0, 0.0);
-        drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_momo->country(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_momo->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
-    }
-    if (poscadre == 2)
-    {
-
-        sprintf(temp, "%d", pers_noel->age());
-        draw_alp_tex_box(0.0, 0.0, 256.0, 256.0, 1.0, 256, textures[noel], 1.0);
-        drawFont(pers_noel->name(), 25, 320, 256, 0.0, 0.0, 0.0);
-        drawFont(temp, 25, 320, 286, 0.0, 0.0, 0.0);
-        drawFont(pers_noel->country(), 25, 320, 316, 0.0, 0.0, 0.0);
-        drawFont(pers_noel->vehicle(), 25, 320, 346, 0.0, 0.0, 0.0);
-    }
-    pvr_list_finish();
-    pvr_scene_finish();
+    menu_items_[poscadre]->RenderDetails(filter_mode);
 }
 
-/* Affichage �� l'��craznde la VMU */
 void Menu2D::vmu_lcd_update(int choixim)
 {
     if (choixim == 0)
@@ -712,7 +652,6 @@ void Menu2D::write_on_vmu()
     fs_close(f);
 }
 
-/* V��rifie la pr��sence de fichiers de sauvegarde*/
 int Menu2D::check_savefile(void)
 {
     file_t d;
@@ -880,10 +819,10 @@ void Menu2D::draw_records()
         else if (!strcmp(nom3, "car"))
             draw_alp_tex_box(180.0, 210.0, 244.0, 274.0, 1.0, 256, textures[carlos], 1.0);
 
-        drawFont("Records", 25, 220, 110, 0.0, 0.0, 0.0);
-        drawFont(mot1, 25, 240, 180, 0.0, 0.0, 0.0);
-        drawFont(mot2, 25, 240, 220, 0.0, 0.0, 0.0);
-        drawFont(mot3, 25, 240, 260, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord("Records", filter_mode, 25, 220, 110, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord(mot1, filter_mode, 25, 240, 180, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord(mot2, filter_mode, 25, 240, 220, 0.0, 0.0, 0.0);
+        font_renderer_.WriteWord(mot3, filter_mode, 25, 240, 260, 0.0, 0.0, 0.0);
         pvr_list_finish();
         pvr_scene_finish();
         thd_sleep(110);

@@ -7,7 +7,8 @@
 class MenuManager
 {
 public:
-    MenuManager() {};
+    MenuManager();
+
     ~MenuManager() {};
 
     void Init()

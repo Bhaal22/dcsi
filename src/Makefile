@@ -17,6 +17,8 @@ OBJS = romdisk.o  Element.o \
 	assets/MomoVehicle.o \
 	assets/NoelVehicle.o \
 	game.o \
+	menu/FontRenderer.o \
+	menu/MenuItem.o \
 	menu/MenuManager.o \
 #video.o
 
