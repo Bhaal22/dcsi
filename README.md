@@ -9,3 +9,8 @@ DCSI is a Dreamcast game in a 3D environment where player can drive vehicles aro
 
 ## Software dependencies :
 - KOS 1.3 : http://gamedev.allusion.net/
+
+Development
+===
+
+Follow https://google.github.io/styleguide/cppguide.html#Function_Names
