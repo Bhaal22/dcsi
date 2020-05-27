@@ -1,6 +1,14 @@
 .PHONE: all
 
+PROJECT=DCSI
 TARGET = dcsi.elf
+STRIP = dcsi.bin
+CDI=dcsi.cdi
+ISO=dcsi.iso
+BURN_FOLDER=burn
+SCRAMBLE=1ST_READ.BIN
+IP=resources/IP.BIN
+
 OBJS = romdisk.o  Element.o \
 	assets/PalmTree.o  \
 	assets/TheLittleHouseOnThePrairie.o \
@@ -28,6 +36,7 @@ KOS_LDFLAGS += -L../libs/coldet -L../../Libvfdc/lib/
 all: clean rm-elf $(TARGET)
 
 include ${KOS_BASE}/Makefile.rules
+include ${EXTRA_MAKEFILE_BASE}/Makefile.burn.rules
 
 rm-elf:
 	rm -f $(TARGET)
